@@ -76,6 +76,7 @@ CREATE TABLE Pokemon (
 CREATE TABLE Pokemon_types (
 	poke_dex 					INTEGER NOT NULL,
 	type_id						INTEGER NOT NULL,
+	slot						INTEGER CHECK(slot BETWEEN 1 and 2),
 	
 	FOREIGN KEY (poke_dex) 		REFERENCES Pokemon(poke_dex),
 	FOREIGN KEY (type_id) 		REFERENCES Type_lookup(type_id),
