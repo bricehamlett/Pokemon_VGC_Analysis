@@ -3,6 +3,7 @@ Fill the 'pokemon' table with every pokemon from https://pokeapi.co/
 Start with id = 1 and go until end of Pokedex
 For each pokemon get Pokedex number, name, and base stats
 Also get type and insert into pokemon_types table
+Also use same api to fill 'moves' table for refernces
 """
 
 import requests
@@ -74,7 +75,8 @@ def get_type_id(p_type:  str) -> int:
     "dark": 15,
     "steel": 16,
     "fairy": 17,
-    "normal": 18
+    "normal": 18,
+    "stellar": 19
 }
     try:
         return TYPE_LOOKUP[p_type.lower()]
@@ -95,13 +97,14 @@ def get_connection():
     password="1232",
     connect_timeout=5
 )
-
-
-def main ():
-    URL = "https://pokeapi.co/api/v2/pokemon/"
-    conn = get_connection()
-    cur = conn.cursor()
-    
+          
+       
+"""
+Takes in connection to SQL DB and the URL for pokeapi
+goes through pokedex from the API from 1-1025 pokemon
+Gets their stats and type and commits them into table 'pokemon'
+"""      
+def commit_to_pokemon(cur, conn, URL):
     pokemon_query = """
             INSERT INTO pokemon 
             VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
@@ -155,15 +158,139 @@ def main ():
         raise
     finally:
         cur.close()
-        conn.close()
-            
-       
-        
-        
-        
+        conn.close() 
+      
+def commit_to_moves(cur):
+    
+    #Connect to PokeAPI to get all of the moves
+    BASE_URL = "https://pokeapi.co/api/v2/move?limit=10000"
+    response = requests.get(BASE_URL)
+    response.raise_for_status()
+
+    #Collect all moves into a list
+    all_moves = response.json()["results"]
+
+    print(f"Found {len(all_moves)} moves. Beginning insertion...\n")
+
+    #Loop through all moves
+    for move in all_moves:
+        move_url = move["url"]
+
+
+        try:
+            move_data = requests.get(move_url).json()
+
+            move_id = move_data["id"]
+            move_name = move_data["name"]
+
+            move_type = move_data["type"]["name"]
+            type_id = get_type_id(move_type)
+
+            accuracy = move_data["accuracy"]        # Can be None
+            power = move_data["power"]              # Can be None
+            priority = move_data["priority"]
+
+            cur.execute("""
+                INSERT INTO Moves (move_id, move_name, type_id, accuracy, power, priority)
+                VALUES (%s, %s, %s, %s, %s, %s)
+                ON CONFLICT (move_id) DO NOTHING;
+            """, (move_id, move_name, type_id, accuracy, power, priority))
+
+            #Verify if it inserted properly
+            print(f"Inserted move {move_id} - {move_name}")
+
+            time.sleep(0.05)  # Small delay to be polite to API
+
+        except Exception as e:
+            #If not print details for edge cases
+            print(f"Error inserting move {move['name']}: {e}")
 
     
+
+
     
+def commit_to_abilities(cur):
+    
+    BASE_URL = "https://pokeapi.co/api/v2/ability?limit=100000"
+    resp = requests.get(BASE_URL, timeout=30)
+    resp.raise_for_status()
+    all_abilities = resp.json()["results"]
+
+    print(f"Found {len(all_abilities)} abilities. Beginning insertion...\n")
+
+
+    # LOOP THROUGH ABILITIES (single inserts)  
+    for ability in all_abilities:
+        ability_url = ability["url"]
+
+        try:
+            data = requests.get(ability_url, timeout=30).json()
+
+            ability_id = data["id"]
+            ability_name = data["name"]
+
+            cur.execute("""
+                INSERT INTO Abilities (ability_id, ability_name)
+                VALUES (%s, %s)
+                ON CONFLICT (ability_id) DO NOTHING;
+            """, (ability_id, ability_name))
+
+            print(f"Inserted ability {ability_id} - {ability_name}")
+
+            time.sleep(0.05)  # small delay to be polite to the API
+
+        except Exception as e:
+            print(f"\n\nError inserting ability {ability['name']}: {e}\n\n")
+
+def commit_to_items(cur):
+    
+    CATEGORY_URL = "https://pokeapi.co/api/v2/item-category/held-items/"
+    resp = requests.get(CATEGORY_URL, timeout=30)
+    resp.raise_for_status()
+    all_items = resp.json()
+
+    held_items = all_items["items"]
+    print(f"Found {len(all_items)} items. Beginning insertion...\n")
+
+
+    # LOOP THROUGH ITEMS (single inserts)
+    for item in held_items:
+        try:
+            item_data = requests.get(item["url"], timeout=30).json()
+
+            item_id = item_data["id"]
+            item_name = item_data["name"]  # canonical format
+
+            cur.execute("""
+                INSERT INTO Items (item_id, item_name)
+                VALUES (%s, %s)
+                ON CONFLICT (item_id) DO NOTHING;
+            """, (item_id, item_name))
+
+            print(f"Inserted held item {item_id} - {item_name}")
+
+            time.sleep(0.05)
+
+
+        except Exception as e:
+            print(f"Error inserting item {item.get('name')}: {e}")
+
+
+    
+
+def main ():
+    URL = "https://pokeapi.co/api/v2/pokemon/"
+    conn = get_connection()
+    cur = conn.cursor()
+    
+    #commit_to_pokemon(cur, conn, URL)
+    #commit_to_moves(cur) 
+    #commit_to_abilities(cur)
+    commit_to_items(cur)
+    
+    conn.commit()
+    cur.close()
+    conn.close()
 
 
 
