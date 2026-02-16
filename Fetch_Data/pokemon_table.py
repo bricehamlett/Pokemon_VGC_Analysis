@@ -242,38 +242,65 @@ def commit_to_abilities(cur):
         except Exception as e:
             print(f"\n\nError inserting ability {ability['name']}: {e}\n\n")
 
+import requests
+import time
+
+
 def commit_to_items(cur):
-    
-    CATEGORY_URL = "https://pokeapi.co/api/v2/item-category/held-items/"
-    resp = requests.get(CATEGORY_URL, timeout=30)
-    resp.raise_for_status()
-    all_items = resp.json()
+    """
+    Inserts *all* items from PokeAPI into Items(item_id, item_name),
+    instead of trying to infer held items from an item-category.
 
-    held_items = all_items["items"]
-    print(f"Found {len(all_items)} items. Beginning insertion...\n")
+    Assumptions:
+      - Items table has columns: item_id (PK) and item_name
+      - Caller handles conn.commit() (recommended: commit once after the function)
+    """
 
+    BASE_URL = "https://pokeapi.co/api/v2/item"
+    limit = 200
+    offset = 0
+    inserted = 0
 
-    # LOOP THROUGH ITEMS (single inserts)
-    for item in held_items:
-        try:
-            item_data = requests.get(item["url"], timeout=30).json()
+    while True:
+        resp = requests.get(BASE_URL, params={"limit": limit, "offset": offset}, timeout=30)
+        resp.raise_for_status()
+        data = resp.json()
 
-            item_id = item_data["id"]
-            item_name = item_data["name"]  # canonical format
+        results = data.get("results", [])
+        if not results:
+            break
 
-            cur.execute("""
+        print(f"Fetched {len(results)} items (offset={offset}). Inserting...")
+
+        for it in results:
+            name = it["name"]  # already PokeAPI canonical format
+            url = it["url"]
+
+            # Parse numeric id from URL: .../item/<id>/
+            try:
+                item_id = int(url.rstrip("/").split("/")[-1])
+            except Exception:
+                # Fallback: if URL parsing ever fails, fetch the item detail
+                item_data = requests.get(url, timeout=30).json()
+                item_id = item_data["id"]
+
+            cur.execute(
+                """
                 INSERT INTO Items (item_id, item_name)
                 VALUES (%s, %s)
-                ON CONFLICT (item_id) DO NOTHING;
-            """, (item_id, item_name))
+                ON CONFLICT (item_id) DO NOTHING
+                """,
+                (item_id, name),
+            )
 
-            print(f"Inserted held item {item_id} - {item_name}")
+            inserted += 1
 
-            time.sleep(0.05)
+        # Next page
+        if data.get("next") is None:
+            break
 
-
-        except Exception as e:
-            print(f"Error inserting item {item.get('name')}: {e}")
+        offset += limit
+        time.sleep(0.05)  # small delay to be polite
 
 
     

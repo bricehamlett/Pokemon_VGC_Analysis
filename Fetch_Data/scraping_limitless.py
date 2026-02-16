@@ -23,6 +23,10 @@ import psycopg2
 import pokemon_table
 import time
 import json
+from datetime import datetime
+import re
+import os
+
 
 
 
@@ -70,7 +74,7 @@ def get_event_details (id: int) -> dict:
     
     
     #Get regulation
-    regulation_text = soup.find(class_="infobox-line").findChild("a").text
+    regulation_text = soup.find(class_="infobox-line").find("a").text
     regulation = regulation_text.split("Regulation ")[1]
     
     event_details.update({
@@ -81,7 +85,7 @@ def get_event_details (id: int) -> dict:
     "regulation": regulation
     })
     
-    print("Checkpoint \n\n")
+    
     #List of teams which each team is a disctionary
     teams = []
     
@@ -115,7 +119,7 @@ def get_event_details (id: int) -> dict:
         
         #get Individualized information for each pokemon, name, item, tera, ability and moves
         for pokemon in all_pokemon:
-            pk_name = normalize_string(pokemon.find(class_="name").find("a").text.strip())
+            pk_name = normalize_limitless_name_to_pokeapi(pokemon.find(class_="name").find("a").text.strip())
             pk_item = normalize_string(pokemon.find("div", class_="details").find(class_="item").text.strip())
             pk_ability = normalize_string(pokemon.find(class_="ability").text.split("Ability: ")[1])
             pk_tera_type = pokemon.find(class_="tera").text.split("Tera Type: ")[1].lower()
@@ -139,6 +143,22 @@ def get_event_details (id: int) -> dict:
     
     return event_details
     
+
+def get_event_ids(URL) -> list:
+    res = requests.get(URL)
+    res.raise_for_status()
+    html = res.text
+    soup = BeautifulSoup(html, "html.parser")
+    
+    links = soup.find_all("a", href=lambda x: x and x.startswith("/tournaments/"))
+    
+    hrefs = [a["href"] for a in links]
+    ids = []
+    for href in hrefs:
+        ids.append(href.split('/')[2])
+    return ids
+    
+    
     
 """
 Takes in dictionary generated from get_event_details
@@ -154,7 +174,7 @@ def commit_teams (event_details: dict, cur, conn):
    
    #Query to check if player is already in db 
     player_check = """
-        SELECT 1 FROM Players WHERE player_name = %s
+        SELECT player_id FROM Players WHERE player_name = %s
     """
     
     #Query to check is team already exists
@@ -162,10 +182,16 @@ def commit_teams (event_details: dict, cur, conn):
         SELECT team_id FROM Teams WHERE player_id = %s AND event_id = %s
     """
     
+    #Query to check if event already exists
+    event_check = """
+        SELECT event_id from Events WHERE event_name = %s
+    """
+    
     player_insert = """
         INSERT INTO Players (player_name)
         VALUES(%s)
-        ON CONFLICT DO NOTHING
+        ON CONFLICT (player_id) DO NOTHING
+        RETURNING player_id
     """
     
     team_insert = """
@@ -179,25 +205,35 @@ def commit_teams (event_details: dict, cur, conn):
         ON CONFLICT (event_id) DO NOTHING    
     """
     
-
+    #See if event exists if so return(unless needs an update)
+    cur.execute(event_check, (event_details.get("event_name"),))
+    if cur.fetchone():
+        return
     
     #Create Event if one does not exist alreadt
     cur.execute(event_query,
-                (event_details.get("event_id"), event_details.get("event_name"), event_details.get("regulation"), event_details.get("event_date"), event_details.get("event_size")))
+                (event_details.get("event_id"), event_details.get("event_name"), event_details.get("regulation"), parse_event_date(event_details.get("event_date")), event_details.get("event_size")))
     
     
     for team in event_details.get("teams"):
         
         
-        #Chech for player, if not then create new entry
+        #Check for player, if not then create new entry
         player_name = team.get("player_name")
-        cur.execute(player_check, (player_name,))
-        if not cur.fetchone():
-            cur.execute(player_insert, (player_name,))
+
+        cur.execute(player_insert, (player_name,))
+        row = cur.fetchone()
+
+        if row is not None:
+            player_id = row[0]
+        else:
+            cur.execute(player_check, (player_name,))
+            row = cur.fetchone()
+            if row is None:
+                raise ValueError(f"Player '{player_name}' not found after insert attempt.")
+            player_id = row[0]
          
-        #Get player_id   
-        cur.execute("SELECT player_id FROM Players WHERE player_name = %s", (player_name,))
-        player_id = cur.fetchone()[0]
+        
 
             
         #Check for Team, if team exists go to next next iteration
@@ -210,6 +246,7 @@ def commit_teams (event_details: dict, cur, conn):
         team_id = cur.fetchone()[0]
             
         #Now that player and team has been created go into each pokemon 
+        #print("Successful before team_pokemon")
         commit_team_pokemon(team.get("pokemon"), team_id, cur)
     conn.commit()
         
@@ -239,7 +276,7 @@ def commit_team_pokemon(pokemon_list: list, team_id: int, cur):
         
         #Get poke_dex by first getting name and querying
         pokemon_name = pokemon.get("pokemon_name")
-        pokemon_name = canonical_species_name(pokemon_name)
+        pokemon_name = edge_case_names(pokemon_name)
         cur.execute("SELECT poke_dex FROM pokemon WHERE pokemon_name = %s", (pokemon_name,))
         row = cur.fetchone()
         if row is None:
@@ -294,19 +331,36 @@ def commit_to_team_pokemon_moves(team_pokemon_id: int, move_list: list, cur):
     slot = 1
     for move in move_list:
         
+        if move == '-':
+            break
+        
         cur.execute("SELECT move_id FROM Moves WHERE move_name = %s", (move,))
         row = cur.fetchone()
 
         if row is None:
             raise ValueError(f"Move not found in database: '{move}'")
         move_id = row[0]
+    
         
         cur.execute(team_pokemon_move_insert, (team_pokemon_id, move_id, slot,))
         slot += 1
         
         
-        
-        
+#Make name from limitless match the pokeapi and db name: exluding regional variant and other edge cases        
+def normalize_limitless_name_to_pokeapi(name: str) -> str:
+    if not name:
+        raise ValueError("Pokemon name is empty or None")
+
+    name = name.strip().lower()
+
+    # Remove punctuation PokeAPI doesn't use
+    name = name.replace(".", "")
+    name = name.replace("'", "")
+
+    # Convert spaces to hyphens
+    name = name.replace(" ", "-")
+
+    return name       
             
             
         
@@ -325,60 +379,140 @@ def normalize_string(name: str) -> str:
     )
 
 #Handle forms that are not taken into consideration in this analysis
-def canonical_species_name(scraped_name: str) -> str:
+def edge_case_names(scraped_name: str) -> str:
     # Normalize separators/case
     name = scraped_name.strip()
-
     # Common “form suffix” patterns from VGC sites
     # Add to this dict as you encounter new ones (keeps it contained)
     overrides = {
-        "Urshifu-Rapid-Strike": "Urshifu",
-        "Urshifu-Single-Strike": "Urshifu",
-        "Landorus-Therian": "Landorus",
-        "Thundurus-Therian": "Thundurus",
-        "Tornadus-Therian": "Tornadus",
-        "Indeedee-F": "Indeedee",
-        "Indeedee-M": "Indeedee",
+        "rapid-strike-urshifu": "urshifu-single-strike",
+        "single-strike-urshifu": "urshifu-rapid-strike",
+        "shadow-rider-calyrex" : "calyrex-shadow-rider",
+        "ice-rider-calyrex" : "calyrex-ice-rider",
+        "landorus": "landorus-incarnate",
+        "thundurus": "thundurus-incarnate",
+        "tornadus": "tornadus-incarnate",
+        "landorus-therian" : "landorus-incarnate",
+        "thundurus-therian" : "thundurus-incarnate",
+        "female-indeedee": "indeedee-male",
+        "male-indeedee": "indeedee-male",
+        "indeedee" : "indeedee-male",
+        "galarian-weezing" : "weezing",
+        "tatsugiri" : "tatsugiri-curly",
+        "tatsugiri-droopy-form" : "tatsugiri-curly",
+        "hearthflame-mask-ogerpon" : "ogerpon",
+        "teal-mask-ogerpon" : "ogerpon",
+        "wellspring-mask-ogerpon" : "ogerpon",
+        "cornerstone-mask-ogerpon" : "ogerpon",
+        "galarian-articuno": "articuno",
+        "galarian-zapdos": "zapdos",
+        "galarian-moltres": "moltres",
+        "galarian-slowking": "slowking",
+        "alolan-ninetales": "ninetales",
+        "galarian-darmanitan": "darmanitan",
+        "alolan-exeggutor": "exeggutor",
+        "alolan-marowak": "marowak",
+        "hisuian-arcanine": "arcanine",
+        "hisuian-voltorb": "voltorb",
+        "hisuian-electrode": "electrode",
+        "hisuian-typhlosion": "typhlosion",
+        "hisuian-zoroark": "zoroark",
+        "hisuian-braviary": "braviary",
+        "hisuian-goodra": "goodra",
+        "hisuian-avalugg": "avalugg",
+        "hisuian-decidueye": "decidueye",
+        "hisuian-lilligant" : "lilligant",
+        "bloodmoon-ursaluna" : "ursaluna",
+        "basculegion" : "basculegion-male",
+        "maushold" : "maushold-family-of-four",
+        "paldean-tauros-aqua-breed" : "tauros",
+        "enamorus-therian" : "enamorus-incarnate",
+        "giratina-origin" : "giratina-altered"
         # add more as needed
     }
 
     if name in overrides:
         return overrides[name]
-
-    # Generic fallback: take base before first hyphen if your DB stores base species
-    # (only do this if your DB naming convention matches this assumption)
-    if "-" in name:
-        return name.split("-", 1)[0]
-
+    
     return name
    
-    
-def save_scraped_data():
-    event_details = get_event_details(415)
-    
-    with open("event_415.json", "w", encoding="utf-8") as f:
-        json.dump(event_details, f, indent=2)   
 
-def load_scraped_data() -> dict:
-    with open("event_415.json", "r", encoding="utf-8") as f:
+    
+    
+
+
+
+def parse_event_date(date_str: str):
+    """
+    Convert strings like:
+        '24th January 2026'
+    into:
+        datetime.date(2026, 1, 24)
+
+    Returns a datetime.date object suitable for psycopg2 DATE insertion.
+    """
+
+    if not date_str:
+        raise ValueError("Event date string is empty or None.")
+
+    # Remove ordinal suffixes: st, nd, rd, th
+    cleaned = re.sub(r'(\d+)(st|nd|rd|th)', r'\1', date_str.strip())
+
+    try:
+        parsed = datetime.strptime(cleaned, "%d %B %Y")
+    except ValueError as e:
+        raise ValueError(f"Could not parse date string: '{date_str}'") from e
+
+    return parsed.date()
+    
+def save_scraped_data(event_id):
+    event_details = get_event_details(event_id)
+
+    with open(f"event_{event_id}.json", "w", encoding="utf-8") as f:
+        json.dump(event_details, f, indent=2)
+
+def load_scraped_data(id) -> dict:
+    with open(f"event_{id}.json", "r", encoding="utf-8") as f:
         return json.load(f)
     
 
 def main():
-    #conn = pokemon_table.get_connection()
-    #cur = conn.cursor()
-    
-    
-    event_details = load_scraped_data()
-    print(event_details)
-        
-    #commit_teams(event_415, cur, conn)
-    
-    #cur.close()
-    #conn.close()
+    conn = pokemon_table.get_connection()
+    cur = conn.cursor()
+
+    all_ids = get_event_ids("https://limitlessvgc.com/tournaments?show=100")
+    all_ids.pop(0)
+
+    for event_id in all_ids[:22]:  # first 22 events safely
+        try:
+            file_name = f"event_{event_id}.json"
+
+            # 1️⃣ If file exists → load from disk
+            if os.path.exists(file_name):
+                print(f"Loading {event_id} from local file...")
+                event_details = load_scraped_data(event_id)
+
+            # 2️⃣ If file does NOT exist → scrape (do NOT save)
+            else:
+                print(f"Scraping {event_id} from website...")
+                event_details = get_event_details(event_id)
+
+            # 3️⃣ Insert into DB
+            commit_teams(event_details, cur, conn)
+            conn.commit()
+
+        except Exception as e:
+            conn.rollback()
+            print(f"Failed event {event_id}: {e}")
+
+    cur.close()
+    conn.close()
     
 
-
+    """
+    Failed Events:
+    414, 408, 407, 404, 403, 400
+    """
 
 
 if __name__ == "__main__":

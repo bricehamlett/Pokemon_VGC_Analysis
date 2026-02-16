@@ -1,0 +1,4196 @@
+{
+  "event_id": "399",
+  "event_name": "World Championships 2025",
+  "event_date": "15th August 2025",
+  "event_size": 371,
+  "regulation": "I",
+  "teams": [
+    {
+      "name": "Giovanni Cischke",
+      "placement": 1,
+      "country": "US",
+      "pokemon": [
+        {
+          "pokemon_name": "brute-bonnet",
+          "item": "sitrus-berry",
+          "ability": "protosynthesis",
+          "tera": 2,
+          "moves": [
+            "seed-bomb",
+            "sucker-punch",
+            "spore",
+            "rage-powder"
+          ]
+        },
+        {
+          "pokemon_name": "lunala",
+          "item": "power-herb",
+          "ability": "shadow-shield",
+          "tera": 2,
+          "moves": [
+            "moongeist-beam",
+            "meteor-beam",
+            "wide-guard",
+            "trick-room"
+          ]
+        },
+        {
+          "pokemon_name": "ursaluna",
+          "item": "flame-orb",
+          "ability": "guts",
+          "tera": 13,
+          "moves": [
+            "headlong-rush",
+            "facade",
+            "earthquake",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "chi-yu",
+          "item": "choice-scarf",
+          "ability": "beads-of-ruin",
+          "tera": 13,
+          "moves": [
+            "dark-pulse",
+            "heat-wave",
+            "overheat",
+            "snarl"
+          ]
+        },
+        {
+          "pokemon_name": "koraidon",
+          "item": "life-orb",
+          "ability": "orichalcum-pulse",
+          "tera": 1,
+          "moves": [
+            "close-combat",
+            "flare-blitz",
+            "flame-charge",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "flutter-mane",
+          "item": "focus-sash",
+          "ability": "protosynthesis",
+          "tera": 19,
+          "moves": [
+            "shadow-ball",
+            "moonblast",
+            "icy-wind",
+            "protect"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "James Evans",
+      "placement": 2,
+      "country": "US",
+      "pokemon": [
+        {
+          "pokemon_name": "raging-bolt",
+          "item": "assault-vest",
+          "ability": "protosynthesis",
+          "tera": 4,
+          "moves": [
+            "thunderclap",
+            "dragon-pulse",
+            "thunderbolt",
+            "volt-switch"
+          ]
+        },
+        {
+          "pokemon_name": "landorus",
+          "item": "life-orb",
+          "ability": "sheer-force",
+          "tera": 2,
+          "moves": [
+            "earth-power",
+            "sludge-bomb",
+            "sandsear-storm",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "shadow-rider-calyrex",
+          "item": "focus-sash",
+          "ability": "as-one",
+          "tera": 13,
+          "moves": [
+            "astral-barrage",
+            "encore",
+            "psychic",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "brute-bonnet",
+          "item": "covert-cloak",
+          "ability": "protosynthesis",
+          "tera": 2,
+          "moves": [
+            "sucker-punch",
+            "seed-bomb",
+            "spore",
+            "rage-powder"
+          ]
+        },
+        {
+          "pokemon_name": "koraidon",
+          "item": "clear-amulet",
+          "ability": "orichalcum-pulse",
+          "tera": 1,
+          "moves": [
+            "flare-blitz",
+            "collision-course",
+            "flame-charge",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "incineroar",
+          "item": "rocky-helmet",
+          "ability": "intimidate",
+          "tera": 2,
+          "moves": [
+            "fake-out",
+            "knock-off",
+            "helping-hand",
+            "parting-shot"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Hirofumi Kimura",
+      "placement": 3,
+      "country": "JP",
+      "pokemon": [
+        {
+          "pokemon_name": "incineroar",
+          "item": "safety-goggles",
+          "ability": "intimidate",
+          "tera": 2,
+          "moves": [
+            "knock-off",
+            "flare-blitz",
+            "fake-out",
+            "parting-shot"
+          ]
+        },
+        {
+          "pokemon_name": "ice-rider-calyrex",
+          "item": "leftovers",
+          "ability": "as-one",
+          "tera": 17,
+          "moves": [
+            "glacial-lance",
+            "protect",
+            "trick-room",
+            "leech-seed"
+          ]
+        },
+        {
+          "pokemon_name": "rillaboom",
+          "item": "assault-vest",
+          "ability": "grassy-surge",
+          "tera": 2,
+          "moves": [
+            "wood-hammer",
+            "fake-out",
+            "grassy-glide",
+            "u-turn"
+          ]
+        },
+        {
+          "pokemon_name": "smeargle",
+          "item": "focus-sash",
+          "ability": "moody",
+          "tera": 3,
+          "moves": [
+            "ruination",
+            "spore",
+            "spiky-shield",
+            "follow-me"
+          ]
+        },
+        {
+          "pokemon_name": "landorus",
+          "item": "life-orb",
+          "ability": "sheer-force",
+          "tera": 2,
+          "moves": [
+            "earth-power",
+            "sludge-bomb",
+            "sandsear-storm",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "koraidon",
+          "item": "clear-amulet",
+          "ability": "orichalcum-pulse",
+          "tera": 1,
+          "moves": [
+            "flame-charge",
+            "flare-blitz",
+            "low-kick",
+            "protect"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Montana Mott",
+      "placement": 4,
+      "country": "US",
+      "pokemon": [
+        {
+          "pokemon_name": "zamazenta",
+          "item": "rusted-shield",
+          "ability": "dauntless-shield",
+          "tera": 14,
+          "moves": [
+            "body-press",
+            "heavy-slam",
+            "wide-guard",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "shadow-rider-calyrex",
+          "item": "focus-sash",
+          "ability": "as-one",
+          "tera": 13,
+          "moves": [
+            "astral-barrage",
+            "psychic",
+            "encore",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "raging-bolt",
+          "item": "booster-energy",
+          "ability": "protosynthesis",
+          "tera": 4,
+          "moves": [
+            "thunderbolt",
+            "thunderclap",
+            "dragon-pulse",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "amoonguss",
+          "item": "rocky-helmet",
+          "ability": "regenerator",
+          "tera": 2,
+          "moves": [
+            "spore",
+            "sludge-bomb",
+            "rage-powder",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "dragonite",
+          "item": "choice-band",
+          "ability": "inner-focus",
+          "tera": 18,
+          "moves": [
+            "extreme-speed",
+            "low-kick",
+            "aqua-jet",
+            "outrage"
+          ]
+        },
+        {
+          "pokemon_name": "chien-pao",
+          "item": "assault-vest",
+          "ability": "sword-of-ruin",
+          "tera": 7,
+          "moves": [
+            "ice-spinner",
+            "sucker-punch",
+            "ruination",
+            "icy-wind"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Ko Tsukide",
+      "placement": 5,
+      "country": "JP",
+      "pokemon": [
+        {
+          "pokemon_name": "whimsicott",
+          "item": "covert-cloak",
+          "ability": "prankster",
+          "tera": 2,
+          "moves": [
+            "moonblast",
+            "encore",
+            "light-screen",
+            "tailwind"
+          ]
+        },
+        {
+          "pokemon_name": "miraidon",
+          "item": "life-orb",
+          "ability": "hadron-engine",
+          "tera": 4,
+          "moves": [
+            "electro-drift",
+            "draco-meteor",
+            "volt-switch",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "ursaluna",
+          "item": "flame-orb",
+          "ability": "guts",
+          "tera": 13,
+          "moves": [
+            "facade",
+            "headlong-rush",
+            "earthquake",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "incineroar",
+          "item": "assault-vest",
+          "ability": "intimidate",
+          "tera": 11,
+          "moves": [
+            "flare-blitz",
+            "knock-off",
+            "u-turn",
+            "fake-out"
+          ]
+        },
+        {
+          "pokemon_name": "rapid-strike-urshifu",
+          "item": "choice-band",
+          "ability": "unseen-fist",
+          "tera": 13,
+          "moves": [
+            "surging-strikes",
+            "close-combat",
+            "aqua-jet",
+            "u-turn"
+          ]
+        },
+        {
+          "pokemon_name": "lunala",
+          "item": "electric-seed",
+          "ability": "shadow-shield",
+          "tera": 17,
+          "moves": [
+            "moongeist-beam",
+            "moonblast",
+            "wide-guard",
+            "trick-room"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Michael Kelsch",
+      "placement": 6,
+      "country": "DE",
+      "pokemon": [
+        {
+          "pokemon_name": "amoonguss",
+          "item": "rocky-helmet",
+          "ability": "regenerator",
+          "tera": 1,
+          "moves": [
+            "sludge-bomb",
+            "spore",
+            "rage-powder",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "chien-pao",
+          "item": "assault-vest",
+          "ability": "sword-of-ruin",
+          "tera": 13,
+          "moves": [
+            "ice-spinner",
+            "sucker-punch",
+            "ice-shard",
+            "ruination"
+          ]
+        },
+        {
+          "pokemon_name": "zamazenta",
+          "item": "rusted-shield",
+          "ability": "dauntless-shield",
+          "tera": 14,
+          "moves": [
+            "body-press",
+            "iron-head",
+            "wide-guard",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "shadow-rider-calyrex",
+          "item": "focus-sash",
+          "ability": "as-one",
+          "tera": 13,
+          "moves": [
+            "astral-barrage",
+            "psychic",
+            "encore",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "dragonite",
+          "item": "choice-band",
+          "ability": "inner-focus",
+          "tera": 18,
+          "moves": [
+            "outrage",
+            "extreme-speed",
+            "low-kick",
+            "aqua-jet"
+          ]
+        },
+        {
+          "pokemon_name": "cornerstone-mask-ogerpon",
+          "item": "cornerstone-mask",
+          "ability": "sturdy",
+          "tera": 12,
+          "moves": [
+            "ivy-cudgel",
+            "power-whip",
+            "follow-me",
+            "spiky-shield"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Mao Harada",
+      "placement": 7,
+      "country": "JP",
+      "pokemon": [
+        {
+          "pokemon_name": "koraidon",
+          "item": "clear-amulet",
+          "ability": "orichalcum-pulse",
+          "tera": 1,
+          "moves": [
+            "flare-blitz",
+            "low-kick",
+            "flame-charge",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "flutter-mane",
+          "item": "focus-sash",
+          "ability": "protosynthesis",
+          "tera": 18,
+          "moves": [
+            "moonblast",
+            "protect",
+            "icy-wind",
+            "shadow-ball"
+          ]
+        },
+        {
+          "pokemon_name": "rillaboom",
+          "item": "assault-vest",
+          "ability": "grassy-surge",
+          "tera": 2,
+          "moves": [
+            "wood-hammer",
+            "grassy-glide",
+            "fake-out",
+            "u-turn"
+          ]
+        },
+        {
+          "pokemon_name": "incineroar",
+          "item": "safety-goggles",
+          "ability": "intimidate",
+          "tera": 2,
+          "moves": [
+            "helping-hand",
+            "flare-blitz",
+            "u-turn",
+            "fake-out"
+          ]
+        },
+        {
+          "pokemon_name": "clefairy",
+          "item": "eviolite",
+          "ability": "friend-guard",
+          "tera": 8,
+          "moves": [
+            "follow-me",
+            "helping-hand",
+            "encore",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "shadow-rider-calyrex",
+          "item": "life-orb",
+          "ability": "as-one",
+          "tera": 15,
+          "moves": [
+            "astral-barrage",
+            "psychic",
+            "nasty-plot",
+            "protect"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Victor Medina",
+      "placement": 8,
+      "country": "ES",
+      "pokemon": [
+        {
+          "pokemon_name": "shadow-rider-calyrex",
+          "item": "life-orb",
+          "ability": "as-one",
+          "tera": 15,
+          "moves": [
+            "astral-barrage",
+            "psychic",
+            "nasty-plot",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "zamazenta",
+          "item": "rusted-shield",
+          "ability": "dauntless-shield",
+          "tera": 2,
+          "moves": [
+            "body-press",
+            "heavy-slam",
+            "wide-guard",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "rillaboom",
+          "item": "assault-vest",
+          "ability": "grassy-surge",
+          "tera": 1,
+          "moves": [
+            "wood-hammer",
+            "grassy-glide",
+            "u-turn",
+            "fake-out"
+          ]
+        },
+        {
+          "pokemon_name": "raging-bolt",
+          "item": "booster-energy",
+          "ability": "protosynthesis",
+          "tera": 17,
+          "moves": [
+            "thunderbolt",
+            "dragon-pulse",
+            "thunderclap",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "smeargle",
+          "item": "focus-sash",
+          "ability": "moody",
+          "tera": 13,
+          "moves": [
+            "spore",
+            "follow-me",
+            "wide-guard",
+            "fake-out"
+          ]
+        },
+        {
+          "pokemon_name": "incineroar",
+          "item": "safety-goggles",
+          "ability": "intimidate",
+          "tera": 2,
+          "moves": [
+            "knock-off",
+            "flare-blitz",
+            "parting-shot",
+            "fake-out"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Giuseppe Musicco",
+      "placement": 9,
+      "country": "IT",
+      "pokemon": [
+        {
+          "pokemon_name": "shadow-rider-calyrex",
+          "item": "life-orb",
+          "ability": "as-one",
+          "tera": 15,
+          "moves": [
+            "astral-barrage",
+            "psychic",
+            "nasty-plot",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "incineroar",
+          "item": "rocky-helmet",
+          "ability": "intimidate",
+          "tera": 13,
+          "moves": [
+            "helping-hand",
+            "knock-off",
+            "parting-shot",
+            "fake-out"
+          ]
+        },
+        {
+          "pokemon_name": "raging-bolt",
+          "item": "booster-energy",
+          "ability": "protosynthesis",
+          "tera": 4,
+          "moves": [
+            "thunderbolt",
+            "dragon-pulse",
+            "thunderclap",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "hearthflame-mask-ogerpon",
+          "item": "hearthflame-mask",
+          "ability": "mold-breaker",
+          "tera": 1,
+          "moves": [
+            "ivy-cudgel",
+            "grassy-glide",
+            "follow-me",
+            "spiky-shield"
+          ]
+        },
+        {
+          "pokemon_name": "zamazenta",
+          "item": "rusted-shield",
+          "ability": "dauntless-shield",
+          "tera": 2,
+          "moves": [
+            "heavy-slam",
+            "body-press",
+            "wide-guard",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "rillaboom",
+          "item": "assault-vest",
+          "ability": "grassy-surge",
+          "tera": 1,
+          "moves": [
+            "fake-out",
+            "wood-hammer",
+            "u-turn",
+            "grassy-glide"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "James Baek",
+      "placement": 10,
+      "country": "US",
+      "pokemon": [
+        {
+          "pokemon_name": "shadow-rider-calyrex",
+          "item": "life-orb",
+          "ability": "as-one",
+          "tera": 15,
+          "moves": [
+            "astral-barrage",
+            "psychic",
+            "nasty-plot",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "rillaboom",
+          "item": "assault-vest",
+          "ability": "grassy-surge",
+          "tera": 1,
+          "moves": [
+            "wood-hammer",
+            "grassy-glide",
+            "fake-out",
+            "u-turn"
+          ]
+        },
+        {
+          "pokemon_name": "volcarona",
+          "item": "leftovers",
+          "ability": "flame-body",
+          "tera": 2,
+          "moves": [
+            "fiery-dance",
+            "giga-drain",
+            "quiver-dance",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "koraidon",
+          "item": "clear-amulet",
+          "ability": "orichalcum-pulse",
+          "tera": 1,
+          "moves": [
+            "flare-blitz",
+            "collision-course",
+            "flame-charge",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "regieleki",
+          "item": "focus-sash",
+          "ability": "transistor",
+          "tera": 4,
+          "moves": [
+            "thunderbolt",
+            "electroweb",
+            "volt-switch",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "incineroar",
+          "item": "safety-goggles",
+          "ability": "intimidate",
+          "tera": 11,
+          "moves": [
+            "knock-off",
+            "roar",
+            "fake-out",
+            "parting-shot"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "\u5609\u9686 \u4e95\u6fa4",
+      "placement": 11,
+      "country": "JP",
+      "pokemon": [
+        {
+          "pokemon_name": "koraidon",
+          "item": "loaded-dice",
+          "ability": "orichalcum-pulse",
+          "tera": 1,
+          "moves": [
+            "flare-blitz",
+            "protect",
+            "collision-course",
+            "scale-shot"
+          ]
+        },
+        {
+          "pokemon_name": "iron-treads",
+          "item": "life-orb",
+          "ability": "quark-drive",
+          "tera": 13,
+          "moves": [
+            "iron-head",
+            "knock-off",
+            "high-horsepower",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "incineroar",
+          "item": "rocky-helmet",
+          "ability": "intimidate",
+          "tera": 2,
+          "moves": [
+            "will-o-wisp",
+            "fake-out",
+            "parting-shot",
+            "knock-off"
+          ]
+        },
+        {
+          "pokemon_name": "raging-bolt",
+          "item": "assault-vest",
+          "ability": "protosynthesis",
+          "tera": 17,
+          "moves": [
+            "thunderclap",
+            "snarl",
+            "electroweb",
+            "draco-meteor"
+          ]
+        },
+        {
+          "pokemon_name": "flutter-mane",
+          "item": "focus-sash",
+          "ability": "protosynthesis",
+          "tera": 18,
+          "moves": [
+            "moonblast",
+            "icy-wind",
+            "taunt",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "ho-oh",
+          "item": "clear-amulet",
+          "ability": "regenerator",
+          "tera": 2,
+          "moves": [
+            "sacred-fire",
+            "brave-bird",
+            "tailwind",
+            "protect"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Naoto Kishida",
+      "placement": 12,
+      "country": "JP",
+      "pokemon": [
+        {
+          "pokemon_name": "incineroar",
+          "item": "safety-goggles",
+          "ability": "intimidate",
+          "tera": 2,
+          "moves": [
+            "knock-off",
+            "fake-out",
+            "taunt",
+            "parting-shot"
+          ]
+        },
+        {
+          "pokemon_name": "zamazenta",
+          "item": "rusted-shield",
+          "ability": "dauntless-shield",
+          "tera": 2,
+          "moves": [
+            "body-press",
+            "heavy-slam",
+            "wide-guard",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "grimmsnarl",
+          "item": "light-clay",
+          "ability": "prankster",
+          "tera": 13,
+          "moves": [
+            "spirit-break",
+            "thunder-wave",
+            "reflect",
+            "light-screen"
+          ]
+        },
+        {
+          "pokemon_name": "rillaboom",
+          "item": "assault-vest",
+          "ability": "grassy-surge",
+          "tera": 1,
+          "moves": [
+            "wood-hammer",
+            "grassy-glide",
+            "u-turn",
+            "fake-out"
+          ]
+        },
+        {
+          "pokemon_name": "shadow-rider-calyrex",
+          "item": "life-orb",
+          "ability": "as-one",
+          "tera": 17,
+          "moves": [
+            "astral-barrage",
+            "draining-kiss",
+            "nasty-plot",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "clefairy",
+          "item": "eviolite",
+          "ability": "friend-guard",
+          "tera": 3,
+          "moves": [
+            "life-dew",
+            "follow-me",
+            "helping-hand",
+            "protect"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Aaron Brok",
+      "placement": 13,
+      "country": "US",
+      "pokemon": [
+        {
+          "pokemon_name": "raging-bolt",
+          "item": "booster-energy",
+          "ability": "protosynthesis",
+          "tera": 4,
+          "moves": [
+            "protect",
+            "thunderbolt",
+            "dragon-pulse",
+            "thunderclap"
+          ]
+        },
+        {
+          "pokemon_name": "chien-pao",
+          "item": "assault-vest",
+          "ability": "sword-of-ruin",
+          "tera": 7,
+          "moves": [
+            "ice-spinner",
+            "ruination",
+            "sucker-punch",
+            "ice-shard"
+          ]
+        },
+        {
+          "pokemon_name": "shadow-rider-calyrex",
+          "item": "focus-sash",
+          "ability": "as-one",
+          "tera": 13,
+          "moves": [
+            "protect",
+            "astral-barrage",
+            "psychic",
+            "encore"
+          ]
+        },
+        {
+          "pokemon_name": "amoonguss",
+          "item": "rocky-helmet",
+          "ability": "regenerator",
+          "tera": 17,
+          "moves": [
+            "protect",
+            "spore",
+            "sludge-bomb",
+            "rage-powder"
+          ]
+        },
+        {
+          "pokemon_name": "zamazenta",
+          "item": "rusted-shield",
+          "ability": "dauntless-shield",
+          "tera": 14,
+          "moves": [
+            "protect",
+            "body-press",
+            "iron-head",
+            "wide-guard"
+          ]
+        },
+        {
+          "pokemon_name": "cornerstone-mask-ogerpon",
+          "item": "cornerstone-mask",
+          "ability": "sturdy",
+          "tera": 12,
+          "moves": [
+            "spiky-shield",
+            "ivy-cudgel",
+            "taunt",
+            "follow-me"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Theotime Massaut",
+      "placement": 14,
+      "country": "FR",
+      "pokemon": [
+        {
+          "pokemon_name": "clefairy",
+          "item": "eviolite",
+          "ability": "friend-guard",
+          "tera": 3,
+          "moves": [
+            "follow-me",
+            "helping-hand",
+            "life-dew",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "rillaboom",
+          "item": "assault-vest",
+          "ability": "grassy-surge",
+          "tera": 2,
+          "moves": [
+            "wood-hammer",
+            "grassy-glide",
+            "u-turn",
+            "fake-out"
+          ]
+        },
+        {
+          "pokemon_name": "shadow-rider-calyrex",
+          "item": "covert-cloak",
+          "ability": "as-one",
+          "tera": 17,
+          "moves": [
+            "astral-barrage",
+            "draining-kiss",
+            "nasty-plot",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "volcarona",
+          "item": "electric-seed",
+          "ability": "flame-body",
+          "tera": 1,
+          "moves": [
+            "flamethrower",
+            "struggle-bug",
+            "quiver-dance",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "miraidon",
+          "item": "choice-scarf",
+          "ability": "hadron-engine",
+          "tera": 4,
+          "moves": [
+            "electro-drift",
+            "volt-switch",
+            "snarl",
+            "draco-meteor"
+          ]
+        },
+        {
+          "pokemon_name": "incineroar",
+          "item": "safety-goggles",
+          "ability": "intimidate",
+          "tera": 2,
+          "moves": [
+            "roar",
+            "knock-off",
+            "parting-shot",
+            "fake-out"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Nick Navarre",
+      "placement": 15,
+      "country": "US",
+      "pokemon": [
+        {
+          "pokemon_name": "kyogre",
+          "item": "mystic-water",
+          "ability": "drizzle",
+          "tera": 3,
+          "moves": [
+            "origin-pulse",
+            "protect",
+            "hydro-pump",
+            "water-spout"
+          ]
+        },
+        {
+          "pokemon_name": "rillaboom",
+          "item": "assault-vest",
+          "ability": "grassy-surge",
+          "tera": 2,
+          "moves": [
+            "wood-hammer",
+            "u-turn",
+            "grassy-glide",
+            "fake-out"
+          ]
+        },
+        {
+          "pokemon_name": "rapid-strike-urshifu",
+          "item": "choice-scarf",
+          "ability": "unseen-fist",
+          "tera": 13,
+          "moves": [
+            "surging-strikes",
+            "aqua-jet",
+            "u-turn",
+            "close-combat"
+          ]
+        },
+        {
+          "pokemon_name": "flutter-mane",
+          "item": "focus-sash",
+          "ability": "protosynthesis",
+          "tera": 17,
+          "moves": [
+            "moonblast",
+            "icy-wind",
+            "shadow-ball",
+            "taunt"
+          ]
+        },
+        {
+          "pokemon_name": "amoonguss",
+          "item": "rocky-helmet",
+          "ability": "regenerator",
+          "tera": 2,
+          "moves": [
+            "rage-powder",
+            "pollen-puff",
+            "spore",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "ice-rider-calyrex",
+          "item": "leftovers",
+          "ability": "as-one",
+          "tera": 17,
+          "moves": [
+            "glacial-lance",
+            "trick-room",
+            "leech-seed",
+            "protect"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Masayoshi Kuroo",
+      "placement": 16,
+      "country": "AU",
+      "pokemon": [
+        {
+          "pokemon_name": "sneasler",
+          "item": "electric-seed",
+          "ability": "unburden",
+          "tera": 15,
+          "moves": [
+            "low-kick",
+            "dire-claw",
+            "throat-chop",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "ditto",
+          "item": "choice-scarf",
+          "ability": "imposter",
+          "tera": 13,
+          "moves": [
+            "transform",
+            "-",
+            "-",
+            "-"
+          ]
+        },
+        {
+          "pokemon_name": "ice-rider-calyrex",
+          "item": "clear-amulet",
+          "ability": "as-one",
+          "tera": 2,
+          "moves": [
+            "glacial-lance",
+            "high-horsepower",
+            "trick-room",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "miraidon",
+          "item": "life-orb",
+          "ability": "hadron-engine",
+          "tera": 4,
+          "moves": [
+            "draco-meteor",
+            "electro-drift",
+            "volt-switch",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "rapid-strike-urshifu",
+          "item": "focus-sash",
+          "ability": "unseen-fist",
+          "tera": 19,
+          "moves": [
+            "close-combat",
+            "surging-strikes",
+            "aqua-jet",
+            "detect"
+          ]
+        },
+        {
+          "pokemon_name": "incineroar",
+          "item": "assault-vest",
+          "ability": "intimidate",
+          "tera": 11,
+          "moves": [
+            "flare-blitz",
+            "knock-off",
+            "u-turn",
+            "fake-out"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Mattie Morgan",
+      "placement": 17,
+      "country": "IE",
+      "pokemon": [
+        {
+          "pokemon_name": "rapid-strike-urshifu",
+          "item": "choice-band",
+          "ability": "unseen-fist",
+          "tera": 13,
+          "moves": [
+            "close-combat",
+            "surging-strikes",
+            "aqua-jet",
+            "u-turn"
+          ]
+        },
+        {
+          "pokemon_name": "chien-pao",
+          "item": "focus-sash",
+          "ability": "sword-of-ruin",
+          "tera": 13,
+          "moves": [
+            "ice-spinner",
+            "sucker-punch",
+            "taunt",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "zamazenta",
+          "item": "rusted-shield",
+          "ability": "dauntless-shield",
+          "tera": 14,
+          "moves": [
+            "body-press",
+            "heavy-slam",
+            "wide-guard",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "raging-bolt",
+          "item": "booster-energy",
+          "ability": "protosynthesis",
+          "tera": 4,
+          "moves": [
+            "thunderbolt",
+            "thunderclap",
+            "dragon-pulse",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "shadow-rider-calyrex",
+          "item": "life-orb",
+          "ability": "as-one",
+          "tera": 15,
+          "moves": [
+            "astral-barrage",
+            "psychic",
+            "substitute",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "whimsicott",
+          "item": "covert-cloak",
+          "ability": "prankster",
+          "tera": 15,
+          "moves": [
+            "moonblast",
+            "encore",
+            "fake-tears",
+            "tailwind"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Carlos Cabal",
+      "placement": 18,
+      "country": "ES",
+      "pokemon": [
+        {
+          "pokemon_name": "hearthflame-mask-ogerpon",
+          "item": "hearthflame-mask",
+          "ability": "mold-breaker",
+          "tera": 1,
+          "moves": [
+            "helping-hand",
+            "ivy-cudgel",
+            "follow-me",
+            "spiky-shield"
+          ]
+        },
+        {
+          "pokemon_name": "raging-bolt",
+          "item": "booster-energy",
+          "ability": "protosynthesis",
+          "tera": 4,
+          "moves": [
+            "thunderbolt",
+            "thunderclap",
+            "dragon-pulse",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "whimsicott",
+          "item": "covert-cloak",
+          "ability": "prankster",
+          "tera": 15,
+          "moves": [
+            "moonblast",
+            "tailwind",
+            "fake-tears",
+            "encore"
+          ]
+        },
+        {
+          "pokemon_name": "chien-pao",
+          "item": "focus-sash",
+          "ability": "sword-of-ruin",
+          "tera": 13,
+          "moves": [
+            "ice-spinner",
+            "sucker-punch",
+            "taunt",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "zamazenta",
+          "item": "rusted-shield",
+          "ability": "dauntless-shield",
+          "tera": 14,
+          "moves": [
+            "body-press",
+            "heavy-slam",
+            "wide-guard",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "shadow-rider-calyrex",
+          "item": "life-orb",
+          "ability": "as-one",
+          "tera": 15,
+          "moves": [
+            "astral-barrage",
+            "psychic",
+            "pollen-puff",
+            "protect"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Cedric Bernier",
+      "placement": 19,
+      "country": "US",
+      "pokemon": [
+        {
+          "pokemon_name": "kyogre",
+          "item": "mystic-water",
+          "ability": "drizzle",
+          "tera": 3,
+          "moves": [
+            "origin-pulse",
+            "protect",
+            "hydro-pump",
+            "water-spout"
+          ]
+        },
+        {
+          "pokemon_name": "rillaboom",
+          "item": "assault-vest",
+          "ability": "grassy-surge",
+          "tera": 2,
+          "moves": [
+            "wood-hammer",
+            "u-turn",
+            "grassy-glide",
+            "fake-out"
+          ]
+        },
+        {
+          "pokemon_name": "rapid-strike-urshifu",
+          "item": "choice-scarf",
+          "ability": "unseen-fist",
+          "tera": 13,
+          "moves": [
+            "surging-strikes",
+            "aqua-jet",
+            "u-turn",
+            "close-combat"
+          ]
+        },
+        {
+          "pokemon_name": "flutter-mane",
+          "item": "focus-sash",
+          "ability": "protosynthesis",
+          "tera": 17,
+          "moves": [
+            "moonblast",
+            "icy-wind",
+            "shadow-ball",
+            "taunt"
+          ]
+        },
+        {
+          "pokemon_name": "amoonguss",
+          "item": "rocky-helmet",
+          "ability": "regenerator",
+          "tera": 2,
+          "moves": [
+            "rage-powder",
+            "pollen-puff",
+            "spore",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "ice-rider-calyrex",
+          "item": "leftovers",
+          "ability": "as-one",
+          "tera": 17,
+          "moves": [
+            "glacial-lance",
+            "trick-room",
+            "leech-seed",
+            "protect"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Chuppa Cross IV",
+      "placement": 20,
+      "country": "US",
+      "pokemon": [
+        {
+          "pokemon_name": "zamazenta",
+          "item": "rusted-shield",
+          "ability": "dauntless-shield",
+          "tera": 14,
+          "moves": [
+            "body-press",
+            "heavy-slam",
+            "wide-guard",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "shadow-rider-calyrex",
+          "item": "focus-sash",
+          "ability": "as-one",
+          "tera": 13,
+          "moves": [
+            "astral-barrage",
+            "psychic",
+            "encore",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "raging-bolt",
+          "item": "booster-energy",
+          "ability": "protosynthesis",
+          "tera": 4,
+          "moves": [
+            "thunderbolt",
+            "thunderclap",
+            "dragon-pulse",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "amoonguss",
+          "item": "rocky-helmet",
+          "ability": "regenerator",
+          "tera": 2,
+          "moves": [
+            "spore",
+            "sludge-bomb",
+            "rage-powder",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "dragonite",
+          "item": "choice-band",
+          "ability": "inner-focus",
+          "tera": 18,
+          "moves": [
+            "extreme-speed",
+            "low-kick",
+            "aqua-jet",
+            "outrage"
+          ]
+        },
+        {
+          "pokemon_name": "chien-pao",
+          "item": "assault-vest",
+          "ability": "sword-of-ruin",
+          "tera": 7,
+          "moves": [
+            "ice-spinner",
+            "sucker-punch",
+            "ruination",
+            "icy-wind"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Justin Tang",
+      "placement": 21,
+      "country": "US",
+      "pokemon": [
+        {
+          "pokemon_name": "chi-yu",
+          "item": "choice-scarf",
+          "ability": "beads-of-ruin",
+          "tera": 13,
+          "moves": [
+            "heat-wave",
+            "overheat",
+            "snarl",
+            "dark-pulse"
+          ]
+        },
+        {
+          "pokemon_name": "groudon",
+          "item": "assault-vest",
+          "ability": "drought",
+          "tera": 1,
+          "moves": [
+            "heat-crash",
+            "precipice-blades",
+            "high-horsepower",
+            "stone-edge"
+          ]
+        },
+        {
+          "pokemon_name": "raging-bolt",
+          "item": "life-orb",
+          "ability": "protosynthesis",
+          "tera": 4,
+          "moves": [
+            "thunderbolt",
+            "draco-meteor",
+            "thunderclap",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "ice-rider-calyrex",
+          "item": "sitrus-berry",
+          "ability": "as-one",
+          "tera": 2,
+          "moves": [
+            "glacial-lance",
+            "leech-seed",
+            "trick-room",
+            "imprison"
+          ]
+        },
+        {
+          "pokemon_name": "jumpluff",
+          "item": "covert-cloak",
+          "ability": "chlorophyll",
+          "tera": 15,
+          "moves": [
+            "sleep-powder",
+            "pollen-puff",
+            "encore",
+            "tailwind"
+          ]
+        },
+        {
+          "pokemon_name": "flutter-mane",
+          "item": "focus-sash",
+          "ability": "protosynthesis",
+          "tera": 18,
+          "moves": [
+            "moonblast",
+            "shadow-ball",
+            "icy-wind",
+            "protect"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Jo Costagliola",
+      "placement": 22,
+      "country": "US",
+      "pokemon": [
+        {
+          "pokemon_name": "rapid-strike-urshifu",
+          "item": "focus-sash",
+          "ability": "unseen-fist",
+          "tera": 2,
+          "moves": [
+            "surging-strikes",
+            "close-combat",
+            "aqua-jet",
+            "detect"
+          ]
+        },
+        {
+          "pokemon_name": "amoonguss",
+          "item": "sitrus-berry",
+          "ability": "regenerator",
+          "tera": 2,
+          "moves": [
+            "spore",
+            "rage-powder",
+            "pollen-puff",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "incineroar",
+          "item": "assault-vest",
+          "ability": "intimidate",
+          "tera": 11,
+          "moves": [
+            "fake-out",
+            "knock-off",
+            "flare-blitz",
+            "u-turn"
+          ]
+        },
+        {
+          "pokemon_name": "miraidon",
+          "item": "choice-scarf",
+          "ability": "hadron-engine",
+          "tera": 4,
+          "moves": [
+            "electro-drift",
+            "draco-meteor",
+            "volt-switch",
+            "snarl"
+          ]
+        },
+        {
+          "pokemon_name": "farigiraf",
+          "item": "electric-seed",
+          "ability": "armor-tail",
+          "tera": 2,
+          "moves": [
+            "psychic",
+            "foul-play",
+            "trick-room",
+            "helping-hand"
+          ]
+        },
+        {
+          "pokemon_name": "ice-rider-calyrex",
+          "item": "clear-amulet",
+          "ability": "as-one",
+          "tera": 17,
+          "moves": [
+            "glacial-lance",
+            "leech-seed",
+            "protect",
+            "trick-room"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Simone Sanvito",
+      "placement": 23,
+      "country": "IT",
+      "pokemon": [
+        {
+          "pokemon_name": "raging-bolt",
+          "item": "booster-energy",
+          "ability": "protosynthesis",
+          "tera": 4,
+          "moves": [
+            "thunderbolt",
+            "thunderclap",
+            "dragon-pulse",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "amoonguss",
+          "item": "rocky-helmet",
+          "ability": "regenerator",
+          "tera": 1,
+          "moves": [
+            "sludge-bomb",
+            "spore",
+            "rage-powder",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "dragonite",
+          "item": "choice-band",
+          "ability": "inner-focus",
+          "tera": 18,
+          "moves": [
+            "extreme-speed",
+            "outrage",
+            "low-kick",
+            "aqua-jet"
+          ]
+        },
+        {
+          "pokemon_name": "shadow-rider-calyrex",
+          "item": "focus-sash",
+          "ability": "as-one",
+          "tera": 13,
+          "moves": [
+            "astral-barrage",
+            "psychic",
+            "encore",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "zamazenta",
+          "item": "rusted-shield",
+          "ability": "dauntless-shield",
+          "tera": 2,
+          "moves": [
+            "body-press",
+            "heavy-slam",
+            "wide-guard",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "chien-pao",
+          "item": "assault-vest",
+          "ability": "sword-of-ruin",
+          "tera": 7,
+          "moves": [
+            "ice-spinner",
+            "sucker-punch",
+            "icy-wind",
+            "ruination"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Christopher Han",
+      "placement": 24,
+      "country": "US",
+      "pokemon": [
+        {
+          "pokemon_name": "hearthflame-mask-ogerpon",
+          "item": "hearthflame-mask",
+          "ability": "mold-breaker",
+          "tera": 1,
+          "moves": [
+            "helping-hand",
+            "ivy-cudgel",
+            "follow-me",
+            "spiky-shield"
+          ]
+        },
+        {
+          "pokemon_name": "raging-bolt",
+          "item": "booster-energy",
+          "ability": "protosynthesis",
+          "tera": 4,
+          "moves": [
+            "thunderbolt",
+            "thunderclap",
+            "dragon-pulse",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "whimsicott",
+          "item": "covert-cloak",
+          "ability": "prankster",
+          "tera": 15,
+          "moves": [
+            "moonblast",
+            "tailwind",
+            "fake-tears",
+            "encore"
+          ]
+        },
+        {
+          "pokemon_name": "chien-pao",
+          "item": "focus-sash",
+          "ability": "sword-of-ruin",
+          "tera": 13,
+          "moves": [
+            "ice-spinner",
+            "sucker-punch",
+            "taunt",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "zamazenta",
+          "item": "rusted-shield",
+          "ability": "dauntless-shield",
+          "tera": 14,
+          "moves": [
+            "body-press",
+            "heavy-slam",
+            "wide-guard",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "shadow-rider-calyrex",
+          "item": "life-orb",
+          "ability": "as-one",
+          "tera": 15,
+          "moves": [
+            "astral-barrage",
+            "psychic",
+            "pollen-puff",
+            "protect"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Jude Gerard Lee Wei Cong",
+      "placement": 25,
+      "country": "SG",
+      "pokemon": [
+        {
+          "pokemon_name": "rillaboom",
+          "item": "assault-vest",
+          "ability": "grassy-surge",
+          "tera": 2,
+          "moves": [
+            "wood-hammer",
+            "grassy-glide",
+            "u-turn",
+            "fake-out"
+          ]
+        },
+        {
+          "pokemon_name": "shadow-rider-calyrex",
+          "item": "focus-sash",
+          "ability": "as-one",
+          "tera": 13,
+          "moves": [
+            "astral-barrage",
+            "pollen-puff",
+            "will-o-wisp",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "cornerstone-mask-ogerpon",
+          "item": "cornerstone-mask",
+          "ability": "sturdy",
+          "tera": 12,
+          "moves": [
+            "ivy-cudgel",
+            "knock-off",
+            "follow-me",
+            "spiky-shield"
+          ]
+        },
+        {
+          "pokemon_name": "incineroar",
+          "item": "rocky-helmet",
+          "ability": "intimidate",
+          "tera": 11,
+          "moves": [
+            "knock-off",
+            "fake-out",
+            "parting-shot",
+            "will-o-wisp"
+          ]
+        },
+        {
+          "pokemon_name": "terapagos",
+          "item": "leftovers",
+          "ability": "tera-shift",
+          "tera": 19,
+          "moves": [
+            "tera-starstorm",
+            "earth-power",
+            "calm-mind",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "flutter-mane",
+          "item": "booster-energy",
+          "ability": "protosynthesis",
+          "tera": 15,
+          "moves": [
+            "moonblast",
+            "icy-wind",
+            "taunt",
+            "thunder-wave"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Zachary Mnich",
+      "placement": 26,
+      "country": "US",
+      "pokemon": [
+        {
+          "pokemon_name": "flutter-mane",
+          "item": "focus-sash",
+          "ability": "protosynthesis",
+          "tera": 17,
+          "moves": [
+            "protect",
+            "taunt",
+            "icy-wind",
+            "moonblast"
+          ]
+        },
+        {
+          "pokemon_name": "clefairy",
+          "item": "eviolite",
+          "ability": "friend-guard",
+          "tera": 3,
+          "moves": [
+            "protect",
+            "follow-me",
+            "helping-hand",
+            "life-dew"
+          ]
+        },
+        {
+          "pokemon_name": "shadow-rider-calyrex",
+          "item": "life-orb",
+          "ability": "as-one",
+          "tera": 18,
+          "moves": [
+            "protect",
+            "nasty-plot",
+            "psychic",
+            "astral-barrage"
+          ]
+        },
+        {
+          "pokemon_name": "ting-lu",
+          "item": "leftovers",
+          "ability": "vessel-of-ruin",
+          "tera": 17,
+          "moves": [
+            "protect",
+            "throat-chop",
+            "ruination",
+            "sand-tomb"
+          ]
+        },
+        {
+          "pokemon_name": "incineroar",
+          "item": "assault-vest",
+          "ability": "intimidate",
+          "tera": 2,
+          "moves": [
+            "flare-blitz",
+            "knock-off",
+            "u-turn",
+            "fake-out"
+          ]
+        },
+        {
+          "pokemon_name": "koraidon",
+          "item": "clear-amulet",
+          "ability": "orichalcum-pulse",
+          "tera": 1,
+          "moves": [
+            "protect",
+            "flame-charge",
+            "flare-blitz",
+            "collision-course"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Shoma Honami",
+      "placement": 27,
+      "country": "JP",
+      "pokemon": [
+        {
+          "pokemon_name": "ice-rider-calyrex",
+          "item": "leftovers",
+          "ability": "as-one",
+          "tera": 1,
+          "moves": [
+            "glacial-lance",
+            "leech-seed",
+            "trick-room",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "chi-yu",
+          "item": "choice-scarf",
+          "ability": "beads-of-ruin",
+          "tera": 13,
+          "moves": [
+            "heat-wave",
+            "overheat",
+            "dark-pulse",
+            "snarl"
+          ]
+        },
+        {
+          "pokemon_name": "koraidon",
+          "item": "clear-amulet",
+          "ability": "orichalcum-pulse",
+          "tera": 1,
+          "moves": [
+            "flare-blitz",
+            "flame-charge",
+            "low-kick",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "flutter-mane",
+          "item": "focus-sash",
+          "ability": "protosynthesis",
+          "tera": 19,
+          "moves": [
+            "moonblast",
+            "shadow-ball",
+            "icy-wind",
+            "taunt"
+          ]
+        },
+        {
+          "pokemon_name": "raging-bolt",
+          "item": "life-orb",
+          "ability": "protosynthesis",
+          "tera": 4,
+          "moves": [
+            "thunderbolt",
+            "thunderclap",
+            "dragon-pulse",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "incineroar",
+          "item": "assault-vest",
+          "ability": "intimidate",
+          "tera": 11,
+          "moves": [
+            "flare-blitz",
+            "knock-off",
+            "u-turn",
+            "fake-out"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Louis Markl",
+      "placement": 28,
+      "country": "DE",
+      "pokemon": [
+        {
+          "pokemon_name": "zamazenta",
+          "item": "rusted-shield",
+          "ability": "dauntless-shield",
+          "tera": 14,
+          "moves": [
+            "protect",
+            "wide-guard",
+            "body-press",
+            "heavy-slam"
+          ]
+        },
+        {
+          "pokemon_name": "rillaboom",
+          "item": "assault-vest",
+          "ability": "grassy-surge",
+          "tera": 1,
+          "moves": [
+            "wood-hammer",
+            "fake-out",
+            "grassy-glide",
+            "u-turn"
+          ]
+        },
+        {
+          "pokemon_name": "hearthflame-mask-ogerpon",
+          "item": "hearthflame-mask",
+          "ability": "mold-breaker",
+          "tera": 1,
+          "moves": [
+            "spiky-shield",
+            "ivy-cudgel",
+            "follow-me",
+            "grassy-glide"
+          ]
+        },
+        {
+          "pokemon_name": "incineroar",
+          "item": "rocky-helmet",
+          "ability": "intimidate",
+          "tera": 11,
+          "moves": [
+            "fake-out",
+            "parting-shot",
+            "knock-off",
+            "helping-hand"
+          ]
+        },
+        {
+          "pokemon_name": "shadow-rider-calyrex",
+          "item": "life-orb",
+          "ability": "as-one",
+          "tera": 15,
+          "moves": [
+            "protect",
+            "astral-barrage",
+            "nasty-plot",
+            "psychic"
+          ]
+        },
+        {
+          "pokemon_name": "rapid-strike-urshifu",
+          "item": "choice-scarf",
+          "ability": "unseen-fist",
+          "tera": 2,
+          "moves": [
+            "close-combat",
+            "surging-strikes",
+            "u-turn",
+            "aqua-jet"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Brian Collins",
+      "placement": 29,
+      "country": "US",
+      "pokemon": [
+        {
+          "pokemon_name": "roaring-moon",
+          "item": "booster-energy",
+          "ability": "protosynthesis",
+          "tera": 1,
+          "moves": [
+            "knock-off",
+            "breaking-swipe",
+            "tailwind",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "whimsicott",
+          "item": "covert-cloak",
+          "ability": "prankster",
+          "tera": 15,
+          "moves": [
+            "moonblast",
+            "tailwind",
+            "taunt",
+            "encore"
+          ]
+        },
+        {
+          "pokemon_name": "shadow-rider-calyrex",
+          "item": "choice-specs",
+          "ability": "as-one",
+          "tera": 13,
+          "moves": [
+            "astral-barrage",
+            "psychic",
+            "pollen-puff",
+            "shadow-ball"
+          ]
+        },
+        {
+          "pokemon_name": "maushold",
+          "item": "focus-sash",
+          "ability": "friend-guard",
+          "tera": 13,
+          "moves": [
+            "feint",
+            "follow-me",
+            "helping-hand",
+            "taunt"
+          ]
+        },
+        {
+          "pokemon_name": "zamazenta",
+          "item": "rusted-shield",
+          "ability": "dauntless-shield",
+          "tera": 15,
+          "moves": [
+            "body-press",
+            "heavy-slam",
+            "wide-guard",
+            "imprison"
+          ]
+        },
+        {
+          "pokemon_name": "bloodmoon-ursaluna",
+          "item": "life-orb",
+          "ability": "minds-eye",
+          "tera": 18,
+          "moves": [
+            "hyper-voice",
+            "earth-power",
+            "blood-moon",
+            "protect"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Longyu Lin",
+      "placement": 30,
+      "country": "CN",
+      "pokemon": [
+        {
+          "pokemon_name": "rillaboom",
+          "item": "assault-vest",
+          "ability": "grassy-surge",
+          "tera": 2,
+          "moves": [
+            "fake-out",
+            "wood-hammer",
+            "grassy-glide",
+            "u-turn"
+          ]
+        },
+        {
+          "pokemon_name": "smeargle",
+          "item": "focus-sash",
+          "ability": "moody",
+          "tera": 13,
+          "moves": [
+            "fake-out",
+            "spore",
+            "follow-me",
+            "spiky-shield"
+          ]
+        },
+        {
+          "pokemon_name": "raging-bolt",
+          "item": "booster-energy",
+          "ability": "protosynthesis",
+          "tera": 4,
+          "moves": [
+            "thunderbolt",
+            "dragon-pulse",
+            "thunderclap",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "shadow-rider-calyrex",
+          "item": "life-orb",
+          "ability": "as-one",
+          "tera": 15,
+          "moves": [
+            "astral-barrage",
+            "psychic",
+            "nasty-plot",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "zamazenta",
+          "item": "rusted-shield",
+          "ability": "dauntless-shield",
+          "tera": 14,
+          "moves": [
+            "body-press",
+            "heavy-slam",
+            "wide-guard",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "hearthflame-mask-ogerpon",
+          "item": "hearthflame-mask",
+          "ability": "mold-breaker",
+          "tera": 1,
+          "moves": [
+            "ivy-cudgel",
+            "spiky-shield",
+            "follow-me",
+            "helping-hand"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Daanvir Singh Narula",
+      "placement": 31,
+      "country": "SG",
+      "pokemon": [
+        {
+          "pokemon_name": "raging-bolt",
+          "item": "assault-vest",
+          "ability": "protosynthesis",
+          "tera": 4,
+          "moves": [
+            "thunderbolt",
+            "draco-meteor",
+            "thunderclap",
+            "electroweb"
+          ]
+        },
+        {
+          "pokemon_name": "kyogre",
+          "item": "mystic-water",
+          "ability": "drizzle",
+          "tera": 3,
+          "moves": [
+            "origin-pulse",
+            "water-spout",
+            "hydro-pump",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "roaring-moon",
+          "item": "booster-energy",
+          "ability": "protosynthesis",
+          "tera": 9,
+          "moves": [
+            "acrobatics",
+            "knock-off",
+            "tailwind",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "amoonguss",
+          "item": "rocky-helmet",
+          "ability": "regenerator",
+          "tera": 17,
+          "moves": [
+            "pollen-puff",
+            "spore",
+            "rage-powder",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "chien-pao",
+          "item": "focus-sash",
+          "ability": "sword-of-ruin",
+          "tera": 13,
+          "moves": [
+            "ruination",
+            "ice-spinner",
+            "sucker-punch",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "zamazenta",
+          "item": "rusted-shield",
+          "ability": "dauntless-shield",
+          "tera": 3,
+          "moves": [
+            "body-press",
+            "heavy-slam",
+            "wide-guard",
+            "protect"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Joji Kaieda",
+      "placement": 32,
+      "country": "AU",
+      "pokemon": [
+        {
+          "pokemon_name": "incineroar",
+          "item": "safety-goggles",
+          "ability": "intimidate",
+          "tera": 2,
+          "moves": [
+            "knock-off",
+            "flare-blitz",
+            "fake-out",
+            "parting-shot"
+          ]
+        },
+        {
+          "pokemon_name": "ice-rider-calyrex",
+          "item": "leftovers",
+          "ability": "as-one",
+          "tera": 17,
+          "moves": [
+            "glacial-lance",
+            "protect",
+            "trick-room",
+            "leech-seed"
+          ]
+        },
+        {
+          "pokemon_name": "rillaboom",
+          "item": "assault-vest",
+          "ability": "grassy-surge",
+          "tera": 2,
+          "moves": [
+            "wood-hammer",
+            "fake-out",
+            "grassy-glide",
+            "u-turn"
+          ]
+        },
+        {
+          "pokemon_name": "smeargle",
+          "item": "focus-sash",
+          "ability": "moody",
+          "tera": 3,
+          "moves": [
+            "ruination",
+            "spore",
+            "spiky-shield",
+            "follow-me"
+          ]
+        },
+        {
+          "pokemon_name": "landorus",
+          "item": "life-orb",
+          "ability": "sheer-force",
+          "tera": 2,
+          "moves": [
+            "earth-power",
+            "sludge-bomb",
+            "sandsear-storm",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "koraidon",
+          "item": "clear-amulet",
+          "ability": "orichalcum-pulse",
+          "tera": 1,
+          "moves": [
+            "flame-charge",
+            "flare-blitz",
+            "low-kick",
+            "protect"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Patrick Connors",
+      "placement": 33,
+      "country": "US",
+      "pokemon": [
+        {
+          "pokemon_name": "ice-rider-calyrex",
+          "item": "clear-amulet",
+          "ability": "as-one",
+          "tera": 17,
+          "moves": [
+            "protect",
+            "glacial-lance",
+            "high-horsepower",
+            "trick-room"
+          ]
+        },
+        {
+          "pokemon_name": "incineroar",
+          "item": "rocky-helmet",
+          "ability": "intimidate",
+          "tera": 11,
+          "moves": [
+            "knock-off",
+            "will-o-wisp",
+            "parting-shot",
+            "fake-out"
+          ]
+        },
+        {
+          "pokemon_name": "miraidon",
+          "item": "life-orb",
+          "ability": "hadron-engine",
+          "tera": 4,
+          "moves": [
+            "protect",
+            "electro-drift",
+            "draco-meteor",
+            "volt-switch"
+          ]
+        },
+        {
+          "pokemon_name": "iron-hands",
+          "item": "assault-vest",
+          "ability": "quark-drive",
+          "tera": 2,
+          "moves": [
+            "wild-charge",
+            "drain-punch",
+            "low-kick",
+            "fake-out"
+          ]
+        },
+        {
+          "pokemon_name": "farigiraf",
+          "item": "electric-seed",
+          "ability": "armor-tail",
+          "tera": 2,
+          "moves": [
+            "foul-play",
+            "roar",
+            "helping-hand",
+            "trick-room"
+          ]
+        },
+        {
+          "pokemon_name": "iron-bundle",
+          "item": "focus-sash",
+          "ability": "quark-drive",
+          "tera": 13,
+          "moves": [
+            "protect",
+            "freeze-dry",
+            "icy-wind",
+            "encore"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Kian Campbell",
+      "placement": 34,
+      "country": "US",
+      "pokemon": [
+        {
+          "pokemon_name": "amoonguss",
+          "item": "rocky-helmet",
+          "ability": "regenerator",
+          "tera": 2,
+          "moves": [
+            "protect",
+            "spore",
+            "pollen-puff",
+            "rage-powder"
+          ]
+        },
+        {
+          "pokemon_name": "zacian",
+          "item": "rusted-sword",
+          "ability": "intrepid-sword",
+          "tera": 17,
+          "moves": [
+            "iron-head",
+            "play-rough",
+            "swords-dance",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "rapid-strike-urshifu",
+          "item": "mystic-water",
+          "ability": "unseen-fist",
+          "tera": 2,
+          "moves": [
+            "surging-strikes",
+            "detect",
+            "taunt",
+            "aqua-jet"
+          ]
+        },
+        {
+          "pokemon_name": "chien-pao",
+          "item": "focus-sash",
+          "ability": "sword-of-ruin",
+          "tera": 19,
+          "moves": [
+            "sucker-punch",
+            "icicle-crash",
+            "protect",
+            "sacred-sword"
+          ]
+        },
+        {
+          "pokemon_name": "kyogre",
+          "item": "splash-plate",
+          "ability": "drizzle",
+          "tera": 3,
+          "moves": [
+            "water-spout",
+            "protect",
+            "origin-pulse",
+            "hydro-pump"
+          ]
+        },
+        {
+          "pokemon_name": "roaring-moon",
+          "item": "booster-energy",
+          "ability": "protosynthesis",
+          "tera": 9,
+          "moves": [
+            "acrobatics",
+            "knock-off",
+            "tailwind",
+            "protect"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CHIH-HUNG CHIU",
+      "placement": 35,
+      "country": "TW",
+      "pokemon": [
+        {
+          "pokemon_name": "single-strike-urshifu",
+          "item": "choice-band",
+          "ability": "unseen-fist",
+          "tera": 3,
+          "moves": [
+            "close-combat",
+            "u-turn",
+            "wicked-blow",
+            "sucker-punch"
+          ]
+        },
+        {
+          "pokemon_name": "female-indeedee",
+          "item": "safety-goggles",
+          "ability": "psychic-surge",
+          "tera": 17,
+          "moves": [
+            "follow-me",
+            "alluring-voice",
+            "trick-room",
+            "helping-hand"
+          ]
+        },
+        {
+          "pokemon_name": "torkoal",
+          "item": "choice-specs",
+          "ability": "drought",
+          "tera": 1,
+          "moves": [
+            "eruption",
+            "earth-power",
+            "weather-ball",
+            "solar-beam"
+          ]
+        },
+        {
+          "pokemon_name": "lunala",
+          "item": "power-herb",
+          "ability": "shadow-shield",
+          "tera": 3,
+          "moves": [
+            "trick-room",
+            "moongeist-beam",
+            "meteor-beam",
+            "expanding-force"
+          ]
+        },
+        {
+          "pokemon_name": "smeargle",
+          "item": "focus-sash",
+          "ability": "technician",
+          "tera": 3,
+          "moves": [
+            "spore",
+            "fake-out",
+            "decorate",
+            "follow-me"
+          ]
+        },
+        {
+          "pokemon_name": "ice-rider-calyrex",
+          "item": "clear-amulet",
+          "ability": "as-one",
+          "tera": 1,
+          "moves": [
+            "protect",
+            "glacial-lance",
+            "trick-room",
+            "high-horsepower"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Max Morales",
+      "placement": 36,
+      "country": "CR",
+      "pokemon": [
+        {
+          "pokemon_name": "iron-hands",
+          "item": "assault-vest",
+          "ability": "quark-drive",
+          "tera": 2,
+          "moves": [
+            "fake-out",
+            "drain-punch",
+            "low-kick",
+            "wild-charge"
+          ]
+        },
+        {
+          "pokemon_name": "smeargle",
+          "item": "focus-sash",
+          "ability": "moody",
+          "tera": 3,
+          "moves": [
+            "spore",
+            "follow-me",
+            "decorate",
+            "fake-out"
+          ]
+        },
+        {
+          "pokemon_name": "terapagos",
+          "item": "power-herb",
+          "ability": "tera-shift",
+          "tera": 19,
+          "moves": [
+            "earth-power",
+            "meteor-beam",
+            "tera-starstorm",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "chi-yu",
+          "item": "choice-scarf",
+          "ability": "beads-of-ruin",
+          "tera": 13,
+          "moves": [
+            "snarl",
+            "dark-pulse",
+            "heat-wave",
+            "overheat"
+          ]
+        },
+        {
+          "pokemon_name": "tornadus",
+          "item": "covert-cloak",
+          "ability": "prankster",
+          "tera": 2,
+          "moves": [
+            "bleakwind-storm",
+            "taunt",
+            "tailwind",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "shadow-rider-calyrex",
+          "item": "life-orb",
+          "ability": "as-one",
+          "tera": 15,
+          "moves": [
+            "psychic",
+            "astral-barrage",
+            "nasty-plot",
+            "protect"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Grant Laird",
+      "placement": 37,
+      "country": "US",
+      "pokemon": [
+        {
+          "pokemon_name": "grimmsnarl",
+          "item": "light-clay",
+          "ability": "prankster",
+          "tera": 13,
+          "moves": [
+            "reflect",
+            "spirit-break",
+            "light-screen",
+            "thunder-wave"
+          ]
+        },
+        {
+          "pokemon_name": "iron-moth",
+          "item": "booster-energy",
+          "ability": "quark-drive",
+          "tera": 15,
+          "moves": [
+            "flamethrower",
+            "pounce",
+            "toxic-spikes",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "iron-hands",
+          "item": "assault-vest",
+          "ability": "quark-drive",
+          "tera": 2,
+          "moves": [
+            "wild-charge",
+            "drain-punch",
+            "fake-out",
+            "low-kick"
+          ]
+        },
+        {
+          "pokemon_name": "miraidon",
+          "item": "choice-specs",
+          "ability": "hadron-engine",
+          "tera": 4,
+          "moves": [
+            "volt-switch",
+            "draco-meteor",
+            "dazzling-gleam",
+            "electro-drift"
+          ]
+        },
+        {
+          "pokemon_name": "rapid-strike-urshifu",
+          "item": "focus-sash",
+          "ability": "unseen-fist",
+          "tera": 2,
+          "moves": [
+            "surging-strikes",
+            "taunt",
+            "aqua-jet",
+            "detect"
+          ]
+        },
+        {
+          "pokemon_name": "ice-rider-calyrex",
+          "item": "leftovers",
+          "ability": "as-one",
+          "tera": 17,
+          "moves": [
+            "glacial-lance",
+            "leech-seed",
+            "trick-room",
+            "protect"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Yan Sym",
+      "placement": 38,
+      "country": "BR",
+      "pokemon": [
+        {
+          "pokemon_name": "rapid-strike-urshifu",
+          "item": "choice-band",
+          "ability": "unseen-fist",
+          "tera": 13,
+          "moves": [
+            "surging-strikes",
+            "close-combat",
+            "aqua-jet",
+            "u-turn"
+          ]
+        },
+        {
+          "pokemon_name": "ursaluna",
+          "item": "flame-orb",
+          "ability": "guts",
+          "tera": 13,
+          "moves": [
+            "facade",
+            "headlong-rush",
+            "earthquake",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "whimsicott",
+          "item": "covert-cloak",
+          "ability": "prankster",
+          "tera": 2,
+          "moves": [
+            "moonblast",
+            "tailwind",
+            "encore",
+            "light-screen"
+          ]
+        },
+        {
+          "pokemon_name": "incineroar",
+          "item": "assault-vest",
+          "ability": "intimidate",
+          "tera": 11,
+          "moves": [
+            "flare-blitz",
+            "knock-off",
+            "fake-out",
+            "u-turn"
+          ]
+        },
+        {
+          "pokemon_name": "miraidon",
+          "item": "choice-specs",
+          "ability": "hadron-engine",
+          "tera": 17,
+          "moves": [
+            "electro-drift",
+            "draco-meteor",
+            "dazzling-gleam",
+            "volt-switch"
+          ]
+        },
+        {
+          "pokemon_name": "lunala",
+          "item": "electric-seed",
+          "ability": "shadow-shield",
+          "tera": 17,
+          "moves": [
+            "moongeist-beam",
+            "moonblast",
+            "wide-guard",
+            "trick-room"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Hsuan-Chih Kuo",
+      "placement": 39,
+      "country": "NL",
+      "pokemon": [
+        {
+          "pokemon_name": "tornadus",
+          "item": "sharp-beak",
+          "ability": "prankster",
+          "tera": 14,
+          "moves": [
+            "bleakwind-storm",
+            "taunt",
+            "tailwind",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "smeargle",
+          "item": "focus-sash",
+          "ability": "moody",
+          "tera": 13,
+          "moves": [
+            "spore",
+            "decorate",
+            "follow-me",
+            "fake-out"
+          ]
+        },
+        {
+          "pokemon_name": "shadow-rider-calyrex",
+          "item": "life-orb",
+          "ability": "as-one",
+          "tera": 15,
+          "moves": [
+            "astral-barrage",
+            "psychic",
+            "nasty-plot",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "raging-bolt",
+          "item": "booster-energy",
+          "ability": "protosynthesis",
+          "tera": 4,
+          "moves": [
+            "thunderbolt",
+            "draco-meteor",
+            "thunderclap",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "zamazenta",
+          "item": "rusted-shield",
+          "ability": "dauntless-shield",
+          "tera": 3,
+          "moves": [
+            "body-press",
+            "heavy-slam",
+            "wide-guard",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "rillaboom",
+          "item": "assault-vest",
+          "ability": "grassy-surge",
+          "tera": 1,
+          "moves": [
+            "wood-hammer",
+            "u-turn",
+            "grassy-glide",
+            "fake-out"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Shunsuke Minami",
+      "placement": 40,
+      "country": "JP",
+      "pokemon": [
+        {
+          "pokemon_name": "smeargle",
+          "item": "focus-sash",
+          "ability": "moody",
+          "tera": 13,
+          "moves": [
+            "spore",
+            "fake-out",
+            "follow-me",
+            "decorate"
+          ]
+        },
+        {
+          "pokemon_name": "ice-rider-calyrex",
+          "item": "icicle-plate",
+          "ability": "as-one",
+          "tera": 2,
+          "moves": [
+            "glacial-lance",
+            "imprison",
+            "high-horsepower",
+            "trick-room"
+          ]
+        },
+        {
+          "pokemon_name": "chi-yu",
+          "item": "choice-scarf",
+          "ability": "beads-of-ruin",
+          "tera": 13,
+          "moves": [
+            "heat-wave",
+            "dark-pulse",
+            "flamethrower",
+            "snarl"
+          ]
+        },
+        {
+          "pokemon_name": "groudon",
+          "item": "clear-amulet",
+          "ability": "drought",
+          "tera": 1,
+          "moves": [
+            "precipice-blades",
+            "heat-crash",
+            "protect",
+            "high-horsepower"
+          ]
+        },
+        {
+          "pokemon_name": "flutter-mane",
+          "item": "choice-specs",
+          "ability": "protosynthesis",
+          "tera": 17,
+          "moves": [
+            "moonblast",
+            "icy-wind",
+            "dazzling-gleam",
+            "shadow-ball"
+          ]
+        },
+        {
+          "pokemon_name": "raging-bolt",
+          "item": "life-orb",
+          "ability": "protosynthesis",
+          "tera": 4,
+          "moves": [
+            "thunderbolt",
+            "protect",
+            "thunderclap",
+            "draco-meteor"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Victor Vieira",
+      "placement": 41,
+      "country": "BR",
+      "pokemon": [
+        {
+          "pokemon_name": "miraidon",
+          "item": "choice-scarf",
+          "ability": "hadron-engine",
+          "tera": 4,
+          "moves": [
+            "electro-drift",
+            "draco-meteor",
+            "snarl",
+            "volt-switch"
+          ]
+        },
+        {
+          "pokemon_name": "incineroar",
+          "item": "assault-vest",
+          "ability": "intimidate",
+          "tera": 11,
+          "moves": [
+            "u-turn",
+            "knock-off",
+            "flare-blitz",
+            "fake-out"
+          ]
+        },
+        {
+          "pokemon_name": "amoonguss",
+          "item": "rocky-helmet",
+          "ability": "regenerator",
+          "tera": 2,
+          "moves": [
+            "protect",
+            "pollen-puff",
+            "spore",
+            "rage-powder"
+          ]
+        },
+        {
+          "pokemon_name": "ice-rider-calyrex",
+          "item": "clear-amulet",
+          "ability": "as-one",
+          "tera": 17,
+          "moves": [
+            "protect",
+            "glacial-lance",
+            "high-horsepower",
+            "trick-room"
+          ]
+        },
+        {
+          "pokemon_name": "rapid-strike-urshifu",
+          "item": "focus-sash",
+          "ability": "unseen-fist",
+          "tera": 19,
+          "moves": [
+            "detect",
+            "surging-strikes",
+            "close-combat",
+            "aqua-jet"
+          ]
+        },
+        {
+          "pokemon_name": "landorus",
+          "item": "life-orb",
+          "ability": "sheer-force",
+          "tera": 16,
+          "moves": [
+            "protect",
+            "earth-power",
+            "sludge-bomb",
+            "taunt"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Wolfe Glick",
+      "placement": 42,
+      "country": "US",
+      "pokemon": [
+        {
+          "pokemon_name": "incineroar",
+          "item": "safety-goggles",
+          "ability": "intimidate",
+          "tera": 13,
+          "moves": [
+            "fake-out",
+            "parting-shot",
+            "flare-blitz",
+            "will-o-wisp"
+          ]
+        },
+        {
+          "pokemon_name": "koraidon",
+          "item": "life-orb",
+          "ability": "orichalcum-pulse",
+          "tera": 1,
+          "moves": [
+            "protect",
+            "flame-charge",
+            "close-combat",
+            "flare-blitz"
+          ]
+        },
+        {
+          "pokemon_name": "ursaluna",
+          "item": "flame-orb",
+          "ability": "guts",
+          "tera": 13,
+          "moves": [
+            "protect",
+            "headlong-rush",
+            "facade",
+            "earthquake"
+          ]
+        },
+        {
+          "pokemon_name": "amoonguss",
+          "item": "rocky-helmet",
+          "ability": "regenerator",
+          "tera": 2,
+          "moves": [
+            "rage-powder",
+            "spore",
+            "pollen-puff",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "flutter-mane",
+          "item": "focus-sash",
+          "ability": "protosynthesis",
+          "tera": 17,
+          "moves": [
+            "moonblast",
+            "icy-wind",
+            "protect",
+            "shadow-ball"
+          ]
+        },
+        {
+          "pokemon_name": "lunala",
+          "item": "covert-cloak",
+          "ability": "shadow-shield",
+          "tera": 17,
+          "moves": [
+            "wide-guard",
+            "moongeist-beam",
+            "trick-room",
+            "moonblast"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Nils Dunlop",
+      "placement": 43,
+      "country": "SE",
+      "pokemon": [
+        {
+          "pokemon_name": "iron-hands",
+          "item": "assault-vest",
+          "ability": "quark-drive",
+          "tera": 17,
+          "moves": [
+            "fake-out",
+            "low-kick",
+            "wild-charge",
+            "drain-punch"
+          ]
+        },
+        {
+          "pokemon_name": "lunala",
+          "item": "power-herb",
+          "ability": "shadow-shield",
+          "tera": 3,
+          "moves": [
+            "moongeist-beam",
+            "meteor-beam",
+            "wide-guard",
+            "trick-room"
+          ]
+        },
+        {
+          "pokemon_name": "jumpluff",
+          "item": "covert-cloak",
+          "ability": "chlorophyll",
+          "tera": 15,
+          "moves": [
+            "sleep-powder",
+            "tailwind",
+            "rage-powder",
+            "pollen-puff"
+          ]
+        },
+        {
+          "pokemon_name": "koraidon",
+          "item": "life-orb",
+          "ability": "orichalcum-pulse",
+          "tera": 1,
+          "moves": [
+            "close-combat",
+            "flare-blitz",
+            "scale-shot",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "ursaluna",
+          "item": "flame-orb",
+          "ability": "guts",
+          "tera": 17,
+          "moves": [
+            "facade",
+            "headlong-rush",
+            "earthquake",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "chi-yu",
+          "item": "choice-scarf",
+          "ability": "beads-of-ruin",
+          "tera": 1,
+          "moves": [
+            "heat-wave",
+            "dark-pulse",
+            "ruination",
+            "overheat"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Alex Underhill",
+      "placement": 44,
+      "country": "US",
+      "pokemon": [
+        {
+          "pokemon_name": "volcarona",
+          "item": "electric-seed",
+          "ability": "flame-body",
+          "tera": 3,
+          "moves": [
+            "quiver-dance",
+            "protect",
+            "giga-drain",
+            "fiery-dance"
+          ]
+        },
+        {
+          "pokemon_name": "ice-rider-calyrex",
+          "item": "clear-amulet",
+          "ability": "as-one",
+          "tera": 17,
+          "moves": [
+            "protect",
+            "trick-room",
+            "glacial-lance",
+            "leech-seed"
+          ]
+        },
+        {
+          "pokemon_name": "incineroar",
+          "item": "assault-vest",
+          "ability": "intimidate",
+          "tera": 2,
+          "moves": [
+            "knock-off",
+            "u-turn",
+            "flare-blitz",
+            "fake-out"
+          ]
+        },
+        {
+          "pokemon_name": "miraidon",
+          "item": "choice-scarf",
+          "ability": "hadron-engine",
+          "tera": 4,
+          "moves": [
+            "volt-switch",
+            "snarl",
+            "draco-meteor",
+            "electro-drift"
+          ]
+        },
+        {
+          "pokemon_name": "rapid-strike-urshifu",
+          "item": "focus-sash",
+          "ability": "unseen-fist",
+          "tera": 19,
+          "moves": [
+            "surging-strikes",
+            "aqua-jet",
+            "close-combat",
+            "detect"
+          ]
+        },
+        {
+          "pokemon_name": "cornerstone-mask-ogerpon",
+          "item": "cornerstone-mask",
+          "ability": "sturdy",
+          "tera": 12,
+          "moves": [
+            "ivy-cudgel",
+            "power-whip",
+            "spiky-shield",
+            "follow-me"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Luca Ceribelli",
+      "placement": 45,
+      "country": "IT",
+      "pokemon": [
+        {
+          "pokemon_name": "rapid-strike-urshifu",
+          "item": "choice-band",
+          "ability": "unseen-fist",
+          "tera": 13,
+          "moves": [
+            "surging-strikes",
+            "close-combat",
+            "aqua-jet",
+            "u-turn"
+          ]
+        },
+        {
+          "pokemon_name": "ursaluna",
+          "item": "flame-orb",
+          "ability": "guts",
+          "tera": 13,
+          "moves": [
+            "facade",
+            "headlong-rush",
+            "earthquake",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "whimsicott",
+          "item": "covert-cloak",
+          "ability": "prankster",
+          "tera": 2,
+          "moves": [
+            "moonblast",
+            "tailwind",
+            "encore",
+            "light-screen"
+          ]
+        },
+        {
+          "pokemon_name": "incineroar",
+          "item": "assault-vest",
+          "ability": "intimidate",
+          "tera": 11,
+          "moves": [
+            "flare-blitz",
+            "knock-off",
+            "fake-out",
+            "u-turn"
+          ]
+        },
+        {
+          "pokemon_name": "miraidon",
+          "item": "choice-specs",
+          "ability": "hadron-engine",
+          "tera": 17,
+          "moves": [
+            "electro-drift",
+            "draco-meteor",
+            "dazzling-gleam",
+            "volt-switch"
+          ]
+        },
+        {
+          "pokemon_name": "lunala",
+          "item": "electric-seed",
+          "ability": "shadow-shield",
+          "tera": 17,
+          "moves": [
+            "moongeist-beam",
+            "moonblast",
+            "wide-guard",
+            "trick-room"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "William Brown",
+      "placement": 46,
+      "country": "US",
+      "pokemon": [
+        {
+          "pokemon_name": "ice-rider-calyrex",
+          "item": "clear-amulet",
+          "ability": "as-one",
+          "tera": 1,
+          "moves": [
+            "protect",
+            "trick-room",
+            "glacial-lance",
+            "leech-seed"
+          ]
+        },
+        {
+          "pokemon_name": "miraidon",
+          "item": "assault-vest",
+          "ability": "hadron-engine",
+          "tera": 4,
+          "moves": [
+            "draco-meteor",
+            "electro-drift",
+            "snarl",
+            "volt-switch"
+          ]
+        },
+        {
+          "pokemon_name": "incineroar",
+          "item": "rocky-helmet",
+          "ability": "intimidate",
+          "tera": 2,
+          "moves": [
+            "fake-out",
+            "knock-off",
+            "parting-shot",
+            "taunt"
+          ]
+        },
+        {
+          "pokemon_name": "volcarona",
+          "item": "electric-seed",
+          "ability": "flame-body",
+          "tera": 1,
+          "moves": [
+            "struggle-bug",
+            "quiver-dance",
+            "protect",
+            "flamethrower"
+          ]
+        },
+        {
+          "pokemon_name": "wellspring-mask-ogerpon",
+          "item": "wellspring-mask",
+          "ability": "water-absorb",
+          "tera": 2,
+          "moves": [
+            "spiky-shield",
+            "ivy-cudgel",
+            "horn-leech",
+            "follow-me"
+          ]
+        },
+        {
+          "pokemon_name": "annihilape",
+          "item": "choice-scarf",
+          "ability": "defiant",
+          "tera": 15,
+          "moves": [
+            "shadow-claw",
+            "u-turn",
+            "final-gambit",
+            "close-combat"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "TAKAHIRO FUTAMURA",
+      "placement": 47,
+      "country": "JP",
+      "pokemon": [
+        {
+          "pokemon_name": "rapid-strike-urshifu",
+          "item": "choice-band",
+          "ability": "unseen-fist",
+          "tera": 13,
+          "moves": [
+            "surging-strikes",
+            "close-combat",
+            "u-turn",
+            "aqua-jet"
+          ]
+        },
+        {
+          "pokemon_name": "ice-rider-calyrex",
+          "item": "clear-amulet",
+          "ability": "as-one",
+          "tera": 1,
+          "moves": [
+            "protect",
+            "glacial-lance",
+            "high-horsepower",
+            "trick-room"
+          ]
+        },
+        {
+          "pokemon_name": "grimmsnarl",
+          "item": "light-clay",
+          "ability": "prankster",
+          "tera": 13,
+          "moves": [
+            "spirit-break",
+            "thunder-wave",
+            "reflect",
+            "light-screen"
+          ]
+        },
+        {
+          "pokemon_name": "miraidon",
+          "item": "choice-specs",
+          "ability": "hadron-engine",
+          "tera": 17,
+          "moves": [
+            "electro-drift",
+            "draco-meteor",
+            "dazzling-gleam",
+            "volt-switch"
+          ]
+        },
+        {
+          "pokemon_name": "incineroar",
+          "item": "assault-vest",
+          "ability": "intimidate",
+          "tera": 11,
+          "moves": [
+            "flare-blitz",
+            "knock-off",
+            "u-turn",
+            "fake-out"
+          ]
+        },
+        {
+          "pokemon_name": "tornadus",
+          "item": "covert-cloak",
+          "ability": "prankster",
+          "tera": 15,
+          "moves": [
+            "bleakwind-storm",
+            "rain-dance",
+            "tailwind",
+            "substitute"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Kiran Singh",
+      "placement": 48,
+      "country": "AU",
+      "pokemon": [
+        {
+          "pokemon_name": "incineroar",
+          "item": "assault-vest",
+          "ability": "intimidate",
+          "tera": 2,
+          "moves": [
+            "flare-blitz",
+            "knock-off",
+            "u-turn",
+            "fake-out"
+          ]
+        },
+        {
+          "pokemon_name": "volcarona",
+          "item": "electric-seed",
+          "ability": "flame-body",
+          "tera": 3,
+          "moves": [
+            "fiery-dance",
+            "giga-drain",
+            "quiver-dance",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "rapid-strike-urshifu",
+          "item": "focus-sash",
+          "ability": "unseen-fist",
+          "tera": 19,
+          "moves": [
+            "surging-strikes",
+            "close-combat",
+            "aqua-jet",
+            "detect"
+          ]
+        },
+        {
+          "pokemon_name": "amoonguss",
+          "item": "rocky-helmet",
+          "ability": "regenerator",
+          "tera": 2,
+          "moves": [
+            "spore",
+            "rage-powder",
+            "pollen-puff",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "ice-rider-calyrex",
+          "item": "clear-amulet",
+          "ability": "as-one",
+          "tera": 1,
+          "moves": [
+            "glacial-lance",
+            "high-horsepower",
+            "trick-room",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "miraidon",
+          "item": "choice-scarf",
+          "ability": "hadron-engine",
+          "tera": 4,
+          "moves": [
+            "electro-drift",
+            "volt-switch",
+            "draco-meteor",
+            "snarl"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Matteo Velata",
+      "placement": 49,
+      "country": "IT",
+      "pokemon": [
+        {
+          "pokemon_name": "chi-yu",
+          "item": "choice-scarf",
+          "ability": "beads-of-ruin",
+          "tera": 8,
+          "moves": [
+            "snarl",
+            "overheat",
+            "ruination",
+            "heat-wave"
+          ]
+        },
+        {
+          "pokemon_name": "shadow-rider-calyrex",
+          "item": "focus-sash",
+          "ability": "as-one",
+          "tera": 13,
+          "moves": [
+            "astral-barrage",
+            "psychic",
+            "encore",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "cornerstone-mask-ogerpon",
+          "item": "cornerstone-mask",
+          "ability": "sturdy",
+          "tera": 12,
+          "moves": [
+            "ivy-cudgel",
+            "power-whip",
+            "follow-me",
+            "spiky-shield"
+          ]
+        },
+        {
+          "pokemon_name": "rillaboom",
+          "item": "assault-vest",
+          "ability": "grassy-surge",
+          "tera": 1,
+          "moves": [
+            "wood-hammer",
+            "grassy-glide",
+            "u-turn",
+            "fake-out"
+          ]
+        },
+        {
+          "pokemon_name": "zamazenta",
+          "item": "rusted-shield",
+          "ability": "dauntless-shield",
+          "tera": 2,
+          "moves": [
+            "body-press",
+            "iron-head",
+            "wide-guard",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "raging-bolt",
+          "item": "magnet",
+          "ability": "protosynthesis",
+          "tera": 4,
+          "moves": [
+            "thunderbolt",
+            "dragon-pulse",
+            "thunderclap",
+            "protect"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "JENN-CHAU DUH",
+      "placement": 50,
+      "country": "TW",
+      "pokemon": [
+        {
+          "pokemon_name": "incineroar",
+          "item": "assault-vest",
+          "ability": "intimidate",
+          "tera": 11,
+          "moves": [
+            "flare-blitz",
+            "knock-off",
+            "fake-out",
+            "u-turn"
+          ]
+        },
+        {
+          "pokemon_name": "volcarona",
+          "item": "electric-seed",
+          "ability": "flame-body",
+          "tera": 3,
+          "moves": [
+            "fiery-dance",
+            "giga-drain",
+            "quiver-dance",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "amoonguss",
+          "item": "rocky-helmet",
+          "ability": "regenerator",
+          "tera": 2,
+          "moves": [
+            "pollen-puff",
+            "rage-powder",
+            "spore",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "miraidon",
+          "item": "choice-scarf",
+          "ability": "hadron-engine",
+          "tera": 4,
+          "moves": [
+            "electro-drift",
+            "volt-switch",
+            "draco-meteor",
+            "snarl"
+          ]
+        },
+        {
+          "pokemon_name": "rapid-strike-urshifu",
+          "item": "focus-sash",
+          "ability": "unseen-fist",
+          "tera": 19,
+          "moves": [
+            "surging-strikes",
+            "aqua-jet",
+            "close-combat",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "ice-rider-calyrex",
+          "item": "clear-amulet",
+          "ability": "as-one",
+          "tera": 1,
+          "moves": [
+            "glacial-lance",
+            "high-horsepower",
+            "trick-room",
+            "protect"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Takuto Notohara",
+      "placement": 51,
+      "country": "JP",
+      "pokemon": [
+        {
+          "pokemon_name": "rillaboom",
+          "item": "assault-vest",
+          "ability": "grassy-surge",
+          "tera": 1,
+          "moves": [
+            "drum-beating",
+            "grassy-glide",
+            "fake-out",
+            "u-turn"
+          ]
+        },
+        {
+          "pokemon_name": "incineroar",
+          "item": "safety-goggles",
+          "ability": "intimidate",
+          "tera": 2,
+          "moves": [
+            "knock-off",
+            "taunt",
+            "fake-out",
+            "parting-shot"
+          ]
+        },
+        {
+          "pokemon_name": "clefairy",
+          "item": "eviolite",
+          "ability": "friend-guard",
+          "tera": 3,
+          "moves": [
+            "follow-me",
+            "helping-hand",
+            "life-dew",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "shadow-rider-calyrex",
+          "item": "covert-cloak",
+          "ability": "as-one",
+          "tera": 17,
+          "moves": [
+            "astral-barrage",
+            "draining-kiss",
+            "calm-mind",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "grimmsnarl",
+          "item": "light-clay",
+          "ability": "prankster",
+          "tera": 13,
+          "moves": [
+            "spirit-break",
+            "thunder-wave",
+            "reflect",
+            "light-screen"
+          ]
+        },
+        {
+          "pokemon_name": "miraidon",
+          "item": "choice-scarf",
+          "ability": "hadron-engine",
+          "tera": 4,
+          "moves": [
+            "electro-drift",
+            "draco-meteor",
+            "snarl",
+            "volt-switch"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Tom Winter",
+      "placement": 52,
+      "country": "GB",
+      "pokemon": [
+        {
+          "pokemon_name": "raging-bolt",
+          "item": "booster-energy",
+          "ability": "protosynthesis",
+          "tera": 4,
+          "moves": [
+            "thunderbolt",
+            "thunderclap",
+            "dragon-pulse",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "hearthflame-mask-ogerpon",
+          "item": "hearthflame-mask",
+          "ability": "mold-breaker",
+          "tera": 1,
+          "moves": [
+            "ivy-cudgel",
+            "wood-hammer",
+            "follow-me",
+            "spiky-shield"
+          ]
+        },
+        {
+          "pokemon_name": "zamazenta",
+          "item": "rusted-shield",
+          "ability": "dauntless-shield",
+          "tera": 14,
+          "moves": [
+            "body-press",
+            "heavy-slam",
+            "wide-guard",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "chien-pao",
+          "item": "focus-sash",
+          "ability": "sword-of-ruin",
+          "tera": 13,
+          "moves": [
+            "ice-spinner",
+            "sucker-punch",
+            "ruination",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "shadow-rider-calyrex",
+          "item": "life-orb",
+          "ability": "as-one",
+          "tera": 15,
+          "moves": [
+            "astral-barrage",
+            "psychic",
+            "pollen-puff",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "whimsicott",
+          "item": "covert-cloak",
+          "ability": "prankster",
+          "tera": 2,
+          "moves": [
+            "moonblast",
+            "taunt",
+            "tailwind",
+            "encore"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Kevin Salvetto",
+      "placement": 53,
+      "country": "IT",
+      "pokemon": [
+        {
+          "pokemon_name": "rapid-strike-urshifu",
+          "item": "choice-band",
+          "ability": "unseen-fist",
+          "tera": 13,
+          "moves": [
+            "surging-strikes",
+            "close-combat",
+            "aqua-jet",
+            "u-turn"
+          ]
+        },
+        {
+          "pokemon_name": "ursaluna",
+          "item": "flame-orb",
+          "ability": "guts",
+          "tera": 13,
+          "moves": [
+            "facade",
+            "headlong-rush",
+            "earthquake",
+            "protect"
+          ]
+        },
+        {
+          "pokemon_name": "whimsicott",
+          "item": "covert-cloak",
+          "ability": "prankster",
+          "tera": 2,
+          "moves": [
+            "moonblast",
+            "tailwind",
+            "encore",
+            "light-screen"
+          ]
+        },
+        {
+          "pokemon_name": "incineroar",
+          "item": "assault-vest",
+          "ability": "intimidate",
+          "tera": 11,
+          "moves": [
+            "flare-blitz",
+            "knock-off",
+            "fake-out",
+            "u-turn"
+          ]
+        },
+        {
+          "pokemon_name": "miraidon",
+          "item": "choice-specs",
+          "ability": "hadron-engine",
+          "tera": 17,
+          "moves": [
+            "electro-drift",
+            "draco-meteor",
+            "dazzling-gleam",
+            "volt-switch"
+          ]
+        },
+        {
+          "pokemon_name": "lunala",
+          "item": "electric-seed",
+          "ability": "shadow-shield",
+          "tera": 17,
+          "moves": [
+            "moongeist-beam",
+            "moonblast",
+            "wide-guard",
+            "trick-room"
+          ]
+        }
+      ]
+    }
+  ]
+}
