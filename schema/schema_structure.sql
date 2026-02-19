@@ -17,9 +17,11 @@ DROP TABLE IF EXISTS Type_lookup CASCADE;
 
 
 CREATE TABLE Events (
-	event_id 				SERIAL PRIMARY KEY,
+	event_id 				INTEGER PRIMARY KEY,
 	event_name 				Varchar(50) UNIQUE, 
-	regulation 				CHAR(1)
+	regulation 				CHAR(1),
+	event_date 				DATE,
+	event_size				INTEGER NOT NULL
 );
 
 CREATE TABLE Players (
@@ -31,6 +33,7 @@ CREATE TABLE Teams (
 	team_id 				SERIAL PRIMARY KEY,
 	event_id				INTEGER NOT NULL,
 	player_id				INTEGER NOT NULL,
+	placement				INTEGER,
 	
 	FOREIGN KEY (event_id)	REFERENCES Events(event_id),
 	FOREIGN KEY(player_id) 	REFERENCES Players(player_id),
@@ -38,17 +41,12 @@ CREATE TABLE Teams (
 );
 
 CREATE TABLE Type_lookup (
-	type_id 				SERIAL PRIMARY KEY,
+	type_id 				INT PRIMARY KEY,
 	type_name 				VARCHAR(20) UNIQUE
 );
 
-CREATE TABLE Natures (
-	nature_id 				SERIAL PRIMARY KEY,
-	nature_name 			VARCHAR(12)
-);
-
 CREATE TABLE Abilities (
-	ability_id 				SERIAL PRIMARY KEY,
+	ability_id 				INT PRIMARY KEY,
 	ability_name 			VARCHAR(50)
 );
 
@@ -58,7 +56,7 @@ CREATE TABLE Items (
 );
 
 CREATE TABLE Moves (
-    move_id     SERIAL PRIMARY KEY,
+    move_id     INT PRIMARY KEY,
     move_name   VARCHAR(100),
     type_id     INT,
     accuracy    INT,
@@ -70,7 +68,13 @@ CREATE TABLE Moves (
 
 CREATE TABLE Pokemon (
 	poke_dex 				INT PRIMARY KEY,
-	pokemon_name 			VARCHAR(100)
+	pokemon_name 			VARCHAR(100),
+	hp  					SMALLINT NOT NULL,
+  	atk   					SMALLINT NOT NULL,
+  	def   					SMALLINT NOT NULL,
+  	spa   					SMALLINT NOT NULL,
+  	spd  					SMALLINT NOT NULL,
+  	spe   					SMALLINT NOT NULL
 );
 
 CREATE TABLE Pokemon_types (
@@ -89,7 +93,6 @@ CREATE TABLE Team_Pokemon (
 	team_id 				INTEGER NOT NULL,
 	slot 					INT NOT NULL CHECK(slot >= 1 and slot <= 6),
 	poke_dex 				INTEGER NOT NULL,
-	nature_id				INTEGER,
 	item_id					INTEGER,
 	tera_type				INTEGER,
 	ability_id				INTEGER,
@@ -98,7 +101,6 @@ CREATE TABLE Team_Pokemon (
 
 	FOREIGN KEY (team_id) 	REFERENCES Teams(team_id),
 	FOREIGN KEY(poke_dex) 	REFERENCES Pokemon(poke_dex),
-	FOREIGN KEY(nature_id) 	REFERENCES Natures(nature_id),
 	FOREIGN KEY(item_id) 	REFERENCES Items(item_id),
 	FOREIGN KEY(tera_type) 	REFERENCES Type_lookup(type_id),
 	FOREIGN KEY(ability_id)	REFERENCES Abilities(ability_id),
