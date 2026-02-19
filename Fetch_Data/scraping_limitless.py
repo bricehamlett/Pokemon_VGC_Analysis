@@ -144,18 +144,23 @@ def get_event_details (id: int) -> dict:
     return event_details
     
 
-def get_event_ids(URL) -> list:
-    res = requests.get(URL)
-    res.raise_for_status()
-    html = res.text
-    soup = BeautifulSoup(html, "html.parser")
-    
-    links = soup.find_all("a", href=lambda x: x and x.startswith("/tournaments/"))
-    
-    hrefs = [a["href"] for a in links]
+def get_event_ids(pages: int) -> list:
+    URL = "https://limitlessvgc.com/tournaments?show=100&page=" 
     ids = []
-    for href in hrefs:
-        ids.append(href.split('/')[2])
+    
+    for page in range(1, pages + 1):
+
+        res = requests.get(URL + str(page))
+        res.raise_for_status()
+        html = res.text
+        soup = BeautifulSoup(html, "html.parser")
+        
+        links = soup.find_all("a", href=lambda x: x and x.startswith("/tournaments/"))
+        
+        hrefs = [a["href"] for a in links]
+        
+        for href in hrefs:
+            ids.append(href.split('/')[2])
     return ids
     
     
@@ -208,6 +213,7 @@ def commit_teams (event_details: dict, cur, conn):
     #See if event exists if so return(unless needs an update)
     cur.execute(event_check, (event_details.get("event_name"),))
     if cur.fetchone():
+        print("Already in DB")
         return
     
     #Create Event if one does not exist alreadt
@@ -257,12 +263,11 @@ def commit_team_pokemon(pokemon_list: list, team_id: int, cur):
         team_id,
         slot,
         poke_dex,
-        nature_id,
         item_id,
         tera_type,
         ability_id
     )
-    VALUES (%s, %s, %s, %s, %s, %s, %s)
+    VALUES (%s, %s, %s, %s, %s, %s)
     ON CONFLICT (team_id, slot) DO NOTHING
     RETURNING team_pokemon_id
     """
@@ -286,9 +291,6 @@ def commit_team_pokemon(pokemon_list: list, team_id: int, cur):
         #Add to insert list
         insert_list.append(poke_dex)
         
-        #Natures not added yet potential expansion with greater data
-        nature_id = None
-        insert_list.append(nature_id)
         
         #Get item_id
         pokemon_item = pokemon.get("item")
@@ -311,7 +313,7 @@ def commit_team_pokemon(pokemon_list: list, team_id: int, cur):
         ability_id = row[0]
         insert_list.append(ability_id)
         
-        cur.execute(team_pokemon_insert, (insert_list[0], insert_list[1], insert_list[2], insert_list[3], insert_list[4], insert_list[5], insert_list[6],))
+        cur.execute(team_pokemon_insert, (insert_list[0], insert_list[1], insert_list[2], insert_list[3], insert_list[4], insert_list[5],))
         team_pokemon_id = cur.fetchone()[0]
         
         #Then after team_pokemon_id is made make moves
@@ -385,8 +387,8 @@ def edge_case_names(scraped_name: str) -> str:
     # Common “form suffix” patterns from VGC sites
     # Add to this dict as you encounter new ones (keeps it contained)
     overrides = {
-        "rapid-strike-urshifu": "urshifu-single-strike",
-        "single-strike-urshifu": "urshifu-rapid-strike",
+        "rapid-strike-urshifu": "urshifu-rapid-strike",
+        "single-strike-urshifu": "urshifu-single-strike",
         "shadow-rider-calyrex" : "calyrex-shadow-rider",
         "ice-rider-calyrex" : "calyrex-ice-rider",
         "landorus": "landorus-incarnate",
@@ -400,6 +402,7 @@ def edge_case_names(scraped_name: str) -> str:
         "galarian-weezing" : "weezing",
         "tatsugiri" : "tatsugiri-curly",
         "tatsugiri-droopy-form" : "tatsugiri-curly",
+        "tatsugiri-stretchy-form" : "tatsugiri-curly",
         "hearthflame-mask-ogerpon" : "ogerpon",
         "teal-mask-ogerpon" : "ogerpon",
         "wellspring-mask-ogerpon" : "ogerpon",
@@ -426,8 +429,15 @@ def edge_case_names(scraped_name: str) -> str:
         "basculegion" : "basculegion-male",
         "maushold" : "maushold-family-of-four",
         "paldean-tauros-aqua-breed" : "tauros",
+        "paldean-tauros-blaze-breed" : "tauros",
         "enamorus-therian" : "enamorus-incarnate",
-        "giratina-origin" : "giratina-altered"
+        "giratina-origin" : "giratina-altered",
+        "oricorio-sensu" : "oricorio-baile",
+        "palafin" : "palafin-zero",
+        "wash-rotom" : "rotom",
+        "hisuian-samurott" : "samurott",
+        "toxtricity" : "toxtricity-amped"
+        
         # add more as needed
     }
 
@@ -480,13 +490,20 @@ def main():
     conn = pokemon_table.get_connection()
     cur = conn.cursor()
 
-    all_ids = get_event_ids("https://limitlessvgc.com/tournaments?show=100")
+    all_ids = get_event_ids(2)
     all_ids.pop(0)
+    
+    #Query to check if event already exists
+    event_check = """
+        SELECT event_id from Events WHERE event_id = %s
+    """
 
-    for event_id in all_ids[:22]:  # first 22 events safely
+    failed_events = [] 
+    for event_id in all_ids:
         try:
             file_name = f"event_{event_id}.json"
 
+            print("Trying event_id:", str(event_id))
             # 1️⃣ If file exists → load from disk
             if os.path.exists(file_name):
                 print(f"Loading {event_id} from local file...")
@@ -494,6 +511,10 @@ def main():
 
             # 2️⃣ If file does NOT exist → scrape (do NOT save)
             else:
+                cur.execute(event_check, (int(event_id),))
+                if cur.fetchone():
+                    print("Already in DB")
+                    continue
                 print(f"Scraping {event_id} from website...")
                 event_details = get_event_details(event_id)
 
@@ -503,15 +524,17 @@ def main():
 
         except Exception as e:
             conn.rollback()
+            failed_events.append(event_id)
             print(f"Failed event {event_id}: {e}")
 
+    print("Failed events: ", failed_events)
     cur.close()
     conn.close()
     
 
     """
     Failed Events:
-    414, 408, 407, 404, 403, 400
+    414, 408, 407, 404, 403, 400, 
     """
 
 
