@@ -18,6 +18,20 @@ services:
       retries: 10
       start_period: 10s
     restart: unless-stopped
+    
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: bricehamlett0514@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: password
+    ports:
+      - "127.0.0.1:5050:80"
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
 
   seed:
     build: .
@@ -44,3 +58,4 @@ services:
 
 volumes:
   postgres_data:
+  pgadmin_data:
