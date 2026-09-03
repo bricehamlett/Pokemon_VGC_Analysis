@@ -6,6 +6,7 @@ Also get type and insert into pokemon_types table
 Also use same api to fill 'moves' table for refernces
 """
 
+import os
 import requests
 import psycopg2
 import json
@@ -90,13 +91,14 @@ Get connection to local data base to store information
 """
 def get_connection():
     return psycopg2.connect(
-    host="127.0.0.1",
-    port=5433,
-    dbname="VGC",
-    user="postgres",
-    password="1232",
-    connect_timeout=5
-)
+        host=os.getenv("DB_HOST", "127.0.0.1"),
+        port=int(os.getenv("DB_PORT", "5433")),
+        dbname=os.getenv("POSTGRES_DB", "VGC"),
+        user=os.getenv("POSTGRES_USER", "postgres"),
+        password=os.getenv("POSTGRES_PASSWORD", "1232"),
+        connect_timeout=5
+    )
+
           
        
 """

@@ -1,0 +1,21 @@
+INSERT INTO Type_lookup (type_id, type_name) VALUES
+    (1, 'fire'),
+    (2, 'water'),
+    (3, 'grass'),
+    (4, 'electric'),
+    (5, 'ice'),
+    (6, 'fighting'),
+    (7, 'poison'),
+    (8, 'ground'),
+    (9, 'flying'),
+    (10, 'psychic'),
+    (11, 'bug'),
+    (12, 'rock'),
+    (13, 'ghost'),
+    (14, 'dragon'),
+    (15, 'dark'),
+    (16, 'steel'),
+    (17, 'fairy'),
+    (18, 'normal'),
+    (19, 'stellar')
+ON CONFLICT (type_id) DO NOTHING;

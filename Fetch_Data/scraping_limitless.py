@@ -134,7 +134,7 @@ def get_event_details (id: int) -> dict:
             pokemon_list.append(complete_pokemon_desc)
         
         #Add that team 
-        teams.append({"name" : name, "placement" : rank, "country" : country, "pokemon" : pokemon_list})
+        teams.append({"player_name" : name, "placement" : rank, "country" : country, "pokemon" : pokemon_list})
         
         time.sleep(0.2)
         

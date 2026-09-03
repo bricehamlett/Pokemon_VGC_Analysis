@@ -1,0 +1,9 @@
+.git
+.gitignore
+.env
+__pycache__/
+*.py[cod]
+*.log
+.venv/
+venv/
+event_*.json
