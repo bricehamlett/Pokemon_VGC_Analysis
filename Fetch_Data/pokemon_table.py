@@ -108,10 +108,19 @@ Gets their stats and type and commits them into table 'pokemon'
 """      
 def commit_to_pokemon(cur, conn, URL):
     pokemon_query = """
-            INSERT INTO pokemon 
-            VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
-            ON CONFLICT (poke_dex) DO NOTHING;  
-            """
+        INSERT INTO pokemon (
+        poke_dex,
+        pokemon_name,
+        hp,
+        atk,
+        def,
+        spa,
+        spd,
+        spe
+    )
+    VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
+    ON CONFLICT (pokemon_name) DO NOTHING
+    RETURNING pk_id; """
     type_query = """
             INSERT INTO pokemon_types
             VALUES (%s, %s, %s)
@@ -132,27 +141,37 @@ def commit_to_pokemon(cur, conn, URL):
             #Parameters for pokemon stable
             stats = get_stats(data)
             name = data.get("name")
-            dex = data.get("id")
-            print(name)
+            pokeapi_id = data.get("id")
+        
             #first type that will be inserted into pokemon_types table
             type1 = get_type_id(data.get("types")[0].get("type").get("name"))
             
+            species_url = data["species"]["url"]
+            national_dex = int(
+                species_url.rstrip("/").split("/")[-1]
+            )
             
-            cur.execute(pokemon_query, (dex, name, stats.get("hp"), stats.get("atk"), stats.get("def"), stats.get("spa"), stats.get("spd"), stats.get("spe")))
-            cur.execute(type_query, (dex, type1, 1))
+            print(
+                f"{name}: "
+                f"PokeAPI ID = {pokeapi_id}, "
+                f"National Dex = {national_dex}"
+            )
+            
+            cur.execute(pokemon_query, (national_dex, name, stats.get("hp"), stats.get("atk"), stats.get("def"), stats.get("spa"), stats.get("spd"), stats.get("spe")))
+            cur.execute(type_query, (national_dex, type1, 1))
             
             #Find if pokemon has second type, if so then add to pokemon_types table
             try:
                 type2 = get_type_id(data.get("types")[1].get("type").get("name"))
                 
-                cur.execute(type_query, (dex, type2, 2))
+                cur.execute(type_query, (national_dex, type2, 2))
             except IndexError:
                 type2 = None
                 
                 
             #if pokemon_id % 50 == 0 or pokemon_id == 1025:
             conn.commit()
-            time.sleep(0.2)
+            time.sleep(0.1)
             
     #If error occurs rollback changes and exit program
     except Exception:

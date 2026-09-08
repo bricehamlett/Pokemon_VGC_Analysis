@@ -262,12 +262,13 @@ def commit_team_pokemon(pokemon_list: list, team_id: int, cur):
     INSERT INTO Team_Pokemon (
         team_id,
         slot,
+        pk_id,
         poke_dex,
         item_id,
         tera_type,
         ability_id
     )
-    VALUES (%s, %s, %s, %s, %s, %s)
+    VALUES (%s, %s, %s, %s, %s, %s, %s)
     ON CONFLICT (team_id, slot) DO NOTHING
     RETURNING team_pokemon_id
     """
@@ -279,17 +280,17 @@ def commit_team_pokemon(pokemon_list: list, team_id: int, cur):
         insert_list = [team_id, cur_slot]
         cur_slot += 1
         
-        #Get poke_dex by first getting name and querying
+        #Get poke_dex and pk_id by first getting name and querying
         pokemon_name = pokemon.get("pokemon_name")
         pokemon_name = edge_case_names(pokemon_name)
-        cur.execute("SELECT poke_dex FROM pokemon WHERE pokemon_name = %s", (pokemon_name,))
+        cur.execute("SELECT pk_id, poke_dex FROM pokemon WHERE pokemon_name = %s", (pokemon_name,))
         row = cur.fetchone()
         if row is None:
             raise ValueError(f"name not found in DB: '{pokemon_name}'")
-        poke_dex = row[0]
+        pk_id, poke_dex = row
         
         #Add to insert list
-        insert_list.append(poke_dex)
+        insert_list.extend([pk_id, poke_dex])
         
         
         #Get item_id
@@ -313,7 +314,7 @@ def commit_team_pokemon(pokemon_list: list, team_id: int, cur):
         ability_id = row[0]
         insert_list.append(ability_id)
         
-        cur.execute(team_pokemon_insert, (insert_list[0], insert_list[1], insert_list[2], insert_list[3], insert_list[4], insert_list[5],))
+        cur.execute(team_pokemon_insert, insert_list)
         team_pokemon_id = cur.fetchone()[0]
         
         #Then after team_pokemon_id is made make moves

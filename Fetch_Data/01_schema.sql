@@ -1,4 +1,3 @@
-DROP TABLE IF EXISTS Team_Pokemon_EV CASCADE;
 DROP TABLE IF EXISTS Team_Pokemon CASCADE;
 DROP TABLE IF EXISTS Pokemon_types CASCADE;
 DROP TABLE IF EXISTS Team_Pokemon_Moves CASCADE;
@@ -67,24 +66,26 @@ CREATE TABLE Moves (
 );
 
 CREATE TABLE Pokemon (
-	poke_dex 				INT PRIMARY KEY,
-	pokemon_name 			VARCHAR(100),
+	pk_id 					SERIAL,
+	poke_dex 				INT NOT NULL,
+	pokemon_name 			VARCHAR(100) UNIQUE NOT NULL,
 	hp  					SMALLINT NOT NULL,
   	atk   					SMALLINT NOT NULL,
   	def   					SMALLINT NOT NULL,
   	spa   					SMALLINT NOT NULL,
   	spd  					SMALLINT NOT NULL,
-  	spe   					SMALLINT NOT NULL
+  	spe   					SMALLINT NOT NULL,
+	PRIMARY KEY(poke_dex, pk_id)
 );
 
 CREATE TABLE Pokemon_types (
-	poke_dex 					INTEGER NOT NULL,
+	pk_id						INTEGER NOT NULL,
 	type_id						INTEGER NOT NULL,
 	slot						INTEGER CHECK(slot BETWEEN 1 and 2),
 	
-	FOREIGN KEY (poke_dex) 		REFERENCES Pokemon(poke_dex),
+	FOREIGN KEY (pk_id) 		REFERENCES Pokemon(poke_dex),
 	FOREIGN KEY (type_id) 		REFERENCES Type_lookup(type_id),
-	PRIMARY KEY(poke_dex, type_id)
+	PRIMARY KEY(pk_id, type_id)
 );
 
 
@@ -92,6 +93,7 @@ CREATE TABLE Team_Pokemon (
 	team_pokemon_id 		SERIAL PRIMARY KEY,
 	team_id 				INTEGER NOT NULL,
 	slot 					INT NOT NULL CHECK(slot >= 1 and slot <= 6),
+	pk_id 					INTEGER NOT NULL,
 	poke_dex 				INTEGER NOT NULL,
 	item_id					INTEGER,
 	tera_type				INTEGER,
@@ -104,25 +106,11 @@ CREATE TABLE Team_Pokemon (
 	FOREIGN KEY(item_id) 	REFERENCES Items(item_id),
 	FOREIGN KEY(tera_type) 	REFERENCES Type_lookup(type_id),
 	FOREIGN KEY(ability_id)	REFERENCES Abilities(ability_id),
+	FOREIGN KEY(pk_id) 		REFERENCES Pokemon(pk_id),
 	
 	UNIQUE(team_id, slot)
 );
 
-CREATE TABLE Team_Pokemon_EV (
-	team_pokemon_id 		INTEGER NOT NULL PRIMARY KEY,
-	FOREIGN KEY(team_pokemon_id) REFERENCES Team_Pokemon(team_pokemon_id)
-	ON DELETE CASCADE,
-
-	hp  					SMALLINT NOT NULL CHECK (hp  BETWEEN 0 AND 252),
-    atk						SMALLINT NOT NULL CHECK (atk BETWEEN 0 AND 252),
-    def 					SMALLINT NOT NULL CHECK (def BETWEEN 0 AND 252),
-    spa 					SMALLINT NOT NULL CHECK (spa BETWEEN 0 AND 252),
-    spd 					SMALLINT NOT NULL CHECK (spd BETWEEN 0 AND 252),
-    spe 					SMALLINT NOT NULL CHECK (spe BETWEEN 0 AND 252),
-
-    CHECK (hp + atk + def + spa + spd + spe <= 510)
-	
-);
 
 CREATE TABLE Team_Pokemon_Moves (
     team_pokemon_id INT,
