@@ -66,16 +66,16 @@ CREATE TABLE Moves (
 );
 
 CREATE TABLE Pokemon (
-	pk_id 					SERIAL,
+	pk_id 					SERIAL PRIMARY KEY,
 	poke_dex 				INT NOT NULL,
 	pokemon_name 			VARCHAR(100) UNIQUE NOT NULL,
+	generation 				INT NOT NULL,
 	hp  					SMALLINT NOT NULL,
   	atk   					SMALLINT NOT NULL,
   	def   					SMALLINT NOT NULL,
   	spa   					SMALLINT NOT NULL,
   	spd  					SMALLINT NOT NULL,
-  	spe   					SMALLINT NOT NULL,
-	PRIMARY KEY(poke_dex, pk_id)
+  	spe   					SMALLINT NOT NULL
 );
 
 CREATE TABLE Pokemon_types (
@@ -83,7 +83,7 @@ CREATE TABLE Pokemon_types (
 	type_id						INTEGER NOT NULL,
 	slot						INTEGER CHECK(slot BETWEEN 1 and 2),
 	
-	FOREIGN KEY (pk_id) 		REFERENCES Pokemon(poke_dex),
+	FOREIGN KEY (pk_id) 		REFERENCES Pokemon(pk_id),
 	FOREIGN KEY (type_id) 		REFERENCES Type_lookup(type_id),
 	PRIMARY KEY(pk_id, type_id)
 );
@@ -102,12 +102,10 @@ CREATE TABLE Team_Pokemon (
 	
 
 	FOREIGN KEY (team_id) 	REFERENCES Teams(team_id),
-	FOREIGN KEY(poke_dex) 	REFERENCES Pokemon(poke_dex),
 	FOREIGN KEY(item_id) 	REFERENCES Items(item_id),
 	FOREIGN KEY(tera_type) 	REFERENCES Type_lookup(type_id),
 	FOREIGN KEY(ability_id)	REFERENCES Abilities(ability_id),
 	FOREIGN KEY(pk_id) 		REFERENCES Pokemon(pk_id),
-	
 	UNIQUE(team_id, slot)
 );
 

@@ -111,6 +111,7 @@ def commit_to_pokemon(cur, conn, URL):
         INSERT INTO pokemon (
         poke_dex,
         pokemon_name,
+        generation,
         hp,
         atk,
         def,
@@ -118,21 +119,31 @@ def commit_to_pokemon(cur, conn, URL):
         spd,
         spe
     )
-    VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
+    VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
     ON CONFLICT (pokemon_name) DO NOTHING
     RETURNING pk_id; """
     type_query = """
             INSERT INTO pokemon_types
             VALUES (%s, %s, %s)
-            ON CONFLICT (poke_dex, type_id) DO NOTHING;
+            ON CONFLICT (pk_id, type_id) DO NOTHING;
             """
     
     
+    list_res = requests.get(
+    "https://pokeapi.co/api/v2/pokemon?limit=100000",
+    timeout=30
+    )
+    
+    list_res.raise_for_status()
+
+    all_pokemon = list_res.json()["results"]
     
     try:
         
-        for pokemon_id in range(1, 1026):
-            res = requests.get(URL + str(pokemon_id) + "/", timeout=10)
+        for pokemon in all_pokemon:
+            
+            
+            res = requests.get(pokemon["url"], timeout=10)
             res.raise_for_status()
             data = res.json()
             
@@ -150,6 +161,8 @@ def commit_to_pokemon(cur, conn, URL):
             national_dex = int(
                 species_url.rstrip("/").split("/")[-1]
             )
+            generation = get_generation(national_dex)
+
             
             print(
                 f"{name}: "
@@ -157,14 +170,24 @@ def commit_to_pokemon(cur, conn, URL):
                 f"National Dex = {national_dex}"
             )
             
-            cur.execute(pokemon_query, (national_dex, name, stats.get("hp"), stats.get("atk"), stats.get("def"), stats.get("spa"), stats.get("spd"), stats.get("spe")))
-            cur.execute(type_query, (national_dex, type1, 1))
+            cur.execute(pokemon_query, (national_dex, name, generation, stats.get("hp"), stats.get("atk"), stats.get("def"), stats.get("spa"), stats.get("spd"), stats.get("spe")))
+            row = cur.fetchone()
+
+            if row is not None:
+                pk_id = row[0]
+            else:
+                cur.execute(
+                    "SELECT pk_id FROM pokemon WHERE pokemon_name = %s",
+                    (name,)
+                )
+                pk_id = cur.fetchone()[0]
+            cur.execute(type_query, (pk_id, type1, 1))
             
             #Find if pokemon has second type, if so then add to pokemon_types table
             try:
                 type2 = get_type_id(data.get("types")[1].get("type").get("name"))
                 
-                cur.execute(type_query, (national_dex, type2, 2))
+                cur.execute(type_query, (pk_id, type2, 2))
             except IndexError:
                 type2 = None
                 
@@ -322,7 +345,29 @@ def commit_to_items(cur):
 
         offset += limit
         time.sleep(0.05)  # small delay to be polite
-
+        
+# Get the generation based on the National Dex number
+def get_generation(national_dex: int) -> int:
+    if national_dex <= 151:
+        return 1
+    elif national_dex <= 251:
+        return 2
+    elif national_dex <= 386:
+        return 3
+    elif national_dex <= 493:
+        return 4
+    elif national_dex <= 649:
+        return 5
+    elif national_dex <= 721:
+        return 6
+    elif national_dex <= 809:
+        return 7
+    elif national_dex <= 905:
+        return 8
+    elif national_dex <= 1025:
+        return 9
+    else:
+        raise ValueError(f"Unknown generation for National Dex #{national_dex}")
 
     
 
@@ -331,9 +376,9 @@ def main ():
     conn = get_connection()
     cur = conn.cursor()
     
-    #commit_to_pokemon(cur, conn, URL)
-    #commit_to_moves(cur) 
-    #commit_to_abilities(cur)
+    commit_to_pokemon(cur, conn, URL)
+    commit_to_moves(cur) 
+    commit_to_abilities(cur)
     commit_to_items(cur)
     
     conn.commit()

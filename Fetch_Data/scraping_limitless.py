@@ -122,8 +122,17 @@ def get_event_details (id: int) -> dict:
             pk_name = normalize_limitless_name_to_pokeapi(pokemon.find(class_="name").find("a").text.strip())
             pk_item = normalize_string(pokemon.find("div", class_="details").find(class_="item").text.strip())
             pk_ability = normalize_string(pokemon.find(class_="ability").text.split("Ability: ")[1])
-            pk_tera_type = pokemon.find(class_="tera").text.split("Tera Type: ")[1].lower()
-            pk_tera_type = pokemon_table.get_type_id(pk_tera_type)
+            
+            pk_ability = edge_case_abilities(pk_name, pk_ability)
+            
+            tera_element = pokemon.find(class_="tera")
+
+            if tera_element:
+                pk_tera_type = tera_element.text.split("Tera Type: ")[1].lower()
+                pk_tera_type = pokemon_table.get_type_id(pk_tera_type)
+            else:
+                pk_tera_type = None
+           
             
             
             pk_all_moves = pokemon.find(class_="moves").find_all("li")
@@ -385,13 +394,14 @@ def normalize_string(name: str) -> str:
 def edge_case_names(scraped_name: str) -> str:
     # Normalize separators/case
     name = scraped_name.strip()
+    
     # Common “form suffix” patterns from VGC sites
     # Add to this dict as you encounter new ones (keeps it contained)
     overrides = {
         "rapid-strike-urshifu": "urshifu-rapid-strike",
         "single-strike-urshifu": "urshifu-single-strike",
-        "shadow-rider-calyrex" : "calyrex-shadow-rider",
-        "ice-rider-calyrex" : "calyrex-ice-rider",
+        "shadow-rider-calyrex" : "calyrex-shadow",
+        "ice-rider-calyrex" : "calyrex-ice",
         "landorus": "landorus-incarnate",
         "thundurus": "thundurus-incarnate",
         "tornadus": "tornadus-incarnate",
@@ -402,12 +412,12 @@ def edge_case_names(scraped_name: str) -> str:
         "indeedee" : "indeedee-male",
         "galarian-weezing" : "weezing",
         "tatsugiri" : "tatsugiri-curly",
-        "tatsugiri-droopy-form" : "tatsugiri-curly",
-        "tatsugiri-stretchy-form" : "tatsugiri-curly",
-        "hearthflame-mask-ogerpon" : "ogerpon",
-        "teal-mask-ogerpon" : "ogerpon",
-        "wellspring-mask-ogerpon" : "ogerpon",
-        "cornerstone-mask-ogerpon" : "ogerpon",
+        "tatsugiri-droopy-form" : "tatsugiri-droopy",
+        "tatsugiri-stretchy-form" : "tatsugiri-stretchy",
+        "hearthflame-mask-ogerpon" : "ogerpon-hearthflame-mask",
+        "teal-mask-ogerpon" : "ogerpon-teal-mask",
+        "wellspring-mask-ogerpon" : "ogerpon-wellspring-mask",
+        "cornerstone-mask-ogerpon" : "ogerpon-cornerstone-mask",
         "galarian-articuno": "articuno",
         "galarian-zapdos": "zapdos",
         "galarian-moltres": "moltres",
@@ -486,6 +496,17 @@ def load_scraped_data(id) -> dict:
     with open(f"event_{id}.json", "r", encoding="utf-8") as f:
         return json.load(f)
     
+
+def edge_case_abilities(pokemon_name: str, ability_name: str) -> str:
+    if ability_name == "as-one":
+        if pokemon_name == "calyrex-shadow":
+            return "as-one-spectrier"
+
+        if pokemon_name == "calyrex-ice":
+            return "as-one-glastrier"
+
+    return ability_name
+
 
 def main():
     conn = pokemon_table.get_connection()
