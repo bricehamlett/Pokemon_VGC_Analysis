@@ -26,6 +26,7 @@ import json
 from datetime import datetime
 import re
 import os
+import traceback
 
 
 
@@ -59,8 +60,9 @@ def get_event_details (id: int) -> dict:
     
     event_details.update({"event_id" : id})
     
-    event_name = soup.find(class_="infobox-heading").get_text(strip=True)
+    event_name = soup.find(class_="infobox-heading").get_text(strip=True)  
     
+      
     #Strips text to form: "24th January 2026 • 688 Players"
     unsplit_text = soup.find(class_="infobox-line").get_text(" ", strip=True)
     
@@ -74,9 +76,10 @@ def get_event_details (id: int) -> dict:
     
     
     #Get regulation
-    regulation_text = soup.find(class_="infobox-line").find("a").text
-    regulation = regulation_text.split("Regulation ")[1]
+    regulation_text = soup.find(class_="infobox-line").find("a").get_text(strip=True)
+    regulation = normalize_regulation(regulation_text)
     
+        
     event_details.update({
     "event_id": id,
     "event_name": event_name,
@@ -120,7 +123,36 @@ def get_event_details (id: int) -> dict:
         #get Individualized information for each pokemon, name, item, tera, ability and moves
         for pokemon in all_pokemon:
             pk_name = normalize_limitless_name_to_pokeapi(pokemon.find(class_="name").find("a").text.strip())
-            pk_item = normalize_string(pokemon.find("div", class_="details").find(class_="item").text.strip())
+            pk_name = edge_case_names(pk_name)
+            item_element = normalize_string(pokemon.find("div", class_="details").find(class_="item").text.strip())
+            
+            # In rare case where pokemon does not hold item
+            details_element = pokemon.find("div", class_="details")
+
+            if details_element is not None:
+                item_element = details_element.find(class_="item")
+            else:
+                item_element = None
+
+            if item_element is not None:
+                item_text = item_element.get_text(" ", strip=True)
+
+                item_text = re.sub(
+                    r"^held\s*item\s*:\s*",
+                    "",
+                    item_text,
+                    flags=re.IGNORECASE
+                ).strip()
+
+                if item_text:
+                    pk_item = normalize_string(item_text)
+                else:
+                    pk_item = None
+            else:
+                pk_item = None
+                
+                
+            
             pk_ability = normalize_string(pokemon.find(class_="ability").text.split("Ability: ")[1])
             
             pk_ability = edge_case_abilities(pk_name, pk_ability)
@@ -291,7 +323,6 @@ def commit_team_pokemon(pokemon_list: list, team_id: int, cur):
         
         #Get poke_dex and pk_id by first getting name and querying
         pokemon_name = pokemon.get("pokemon_name")
-        pokemon_name = edge_case_names(pokemon_name)
         cur.execute("SELECT pk_id, poke_dex FROM pokemon WHERE pokemon_name = %s", (pokemon_name,))
         row = cur.fetchone()
         if row is None:
@@ -304,8 +335,20 @@ def commit_team_pokemon(pokemon_list: list, team_id: int, cur):
         
         #Get item_id
         pokemon_item = pokemon.get("item")
-        cur.execute("SELECT item_id FROM items WHERE item_name = %s", (pokemon_item,))
-        row = cur.fetchone()
+        
+        # Cover for when pokemon does not hold an item (item is None)
+        if pokemon_item is None:
+            item_id = None
+        else:
+            cur.execute(
+                "SELECT item_id FROM items WHERE item_name = %s",
+                (pokemon_item,)
+            )
+            row = cur.fetchone()
+
+            if row is None:
+                raise ValueError(f"Item not found in DB: '{pokemon_item}'")
+    
         if row is None:
             raise ValueError(f"Item not found in DB: '{pokemon_item}'")
         item_id = row[0]
@@ -316,6 +359,7 @@ def commit_team_pokemon(pokemon_list: list, team_id: int, cur):
         
         #Get ability ID
         pokemon_ability = pokemon.get("ability")
+        pokemon_ability = edge_case_abilities(pokemon_name, pokemon_ability)
         cur.execute("SELECT ability_id FROM abilities WHERE ability_name = %s", (pokemon_ability,))
         row = cur.fetchone()
         if row is None:
@@ -402,52 +446,104 @@ def edge_case_names(scraped_name: str) -> str:
         "single-strike-urshifu": "urshifu-single-strike",
         "shadow-rider-calyrex" : "calyrex-shadow",
         "ice-rider-calyrex" : "calyrex-ice",
-        "landorus": "landorus-incarnate",
-        "thundurus": "thundurus-incarnate",
-        "tornadus": "tornadus-incarnate",
-        "landorus-therian" : "landorus-incarnate",
-        "thundurus-therian" : "thundurus-incarnate",
-        "female-indeedee": "indeedee-male",
+        "mimikyu": "mimikyu-disguised",
+        "dudunsparce": "dudunsparce-two-segment",
+        "bloodmoon-ursaluna": "ursaluna-bloodmoon",
+        "female-indeedee": "indeedee-female",
         "male-indeedee": "indeedee-male",
-        "indeedee" : "indeedee-male",
-        "galarian-weezing" : "weezing",
+        "eternal-flower-floette": "floette-eternal",
+        "basculegion": "basculegion-male",
+        "hearthflame-mask-ogerpon" : "ogerpon-hearthflame-mask",
+        "cornerstone-mask-ogerpon" : "ogerpon-cornerstone-mask",
+        "wellspring-mask-ogerpon" : "ogerpon-wellspring-mask",
+        "maushold" : "maushold-family-of-three",
+        "wash-rotom" : "rotom-wash",
+        "heat-rotom" : "rotom-heat",
+        "frost-rotom" : "rotom-frost",
+        "fan-rotom" : "rotom-fan",
+        "mow-rotom" : "rotom-mow",
+        "landorus" : "landorus-therian",
+        "tornadus" : "tornadus-incarnate",
+        "thundurus" : "thundurus-incarnate",
+        "enamorus" : "enamorus-incarnate",
+        "aegislash" : "aegislash-shield",
+        "palafin" : "palafin-hero",
         "tatsugiri" : "tatsugiri-curly",
         "tatsugiri-droopy-form" : "tatsugiri-droopy",
         "tatsugiri-stretchy-form" : "tatsugiri-stretchy",
-        "hearthflame-mask-ogerpon" : "ogerpon-hearthflame-mask",
-        "teal-mask-ogerpon" : "ogerpon-teal-mask",
-        "wellspring-mask-ogerpon" : "ogerpon-wellspring-mask",
-        "cornerstone-mask-ogerpon" : "ogerpon-cornerstone-mask",
-        "galarian-articuno": "articuno",
-        "galarian-zapdos": "zapdos",
-        "galarian-moltres": "moltres",
-        "galarian-slowking": "slowking",
-        "alolan-ninetales": "ninetales",
-        "galarian-darmanitan": "darmanitan",
-        "alolan-exeggutor": "exeggutor",
-        "alolan-marowak": "marowak",
-        "hisuian-arcanine": "arcanine",
-        "hisuian-voltorb": "voltorb",
-        "hisuian-electrode": "electrode",
-        "hisuian-typhlosion": "typhlosion",
-        "hisuian-zoroark": "zoroark",
-        "hisuian-braviary": "braviary",
-        "hisuian-goodra": "goodra",
-        "hisuian-avalugg": "avalugg",
-        "hisuian-decidueye": "decidueye",
-        "hisuian-lilligant" : "lilligant",
-        "bloodmoon-ursaluna" : "ursaluna",
-        "basculegion" : "basculegion-male",
-        "maushold" : "maushold-family-of-four",
-        "paldean-tauros-aqua-breed" : "tauros",
-        "paldean-tauros-blaze-breed" : "tauros",
-        "enamorus-therian" : "enamorus-incarnate",
-        "giratina-origin" : "giratina-altered",
-        "oricorio-sensu" : "oricorio-baile",
-        "palafin" : "palafin-zero",
-        "wash-rotom" : "rotom",
-        "hisuian-samurott" : "samurott",
-        "toxtricity" : "toxtricity-amped"
+        "tatsugiri-soggy-form" : "tatsugiri-soggy",
+        "indeedee" : "indeedee-female",
+        
+        "hisuian-growlithe": "growlithe-hisui",
+        "hisuian-arcanine": "arcanine-hisui",
+        "hisuian-voltorb": "voltorb-hisui",
+        "hisuian-electrode": "electrode-hisui",
+        "hisuian-typhlosion": "typhlosion-hisui",
+        "hisuian-qwilfish": "qwilfish-hisui",
+        "hisuian-sneasel": "sneasel-hisui",
+        "hisuian-samurott": "samurott-hisui",
+        "hisuian-lilligant": "lilligant-hisui",
+        "hisuian-zorua": "zorua-hisui",
+        "hisuian-zoroark": "zoroark-hisui",
+        "hisuian-braviary": "braviary-hisui",
+        "hisuian-sliggoo": "sliggoo-hisui",
+        "hisuian-goodra": "goodra-hisui",
+        "hisuian-avalugg": "avalugg-hisui",
+        "hisuian-decidueye": "decidueye-hisui",
+        
+        
+        "alolan-rattata": "rattata-alola",
+        "alolan-raticate": "raticate-alola",
+        "alolan-raichu": "raichu-alola",
+        "alolan-sandshrew": "sandshrew-alola",
+        "alolan-sandslash": "sandslash-alola",
+        "alolan-vulpix": "vulpix-alola",
+        "alolan-ninetales": "ninetales-alola",
+        "alolan-diglett": "diglett-alola",
+        "alolan-dugtrio": "dugtrio-alola",
+        "alolan-meowth": "meowth-alola",
+        "alolan-persian": "persian-alola",
+        "alolan-geodude": "geodude-alola",
+        "alolan-graveler": "graveler-alola",
+        "alolan-golem": "golem-alola",
+        "alolan-grimer": "grimer-alola",
+        "alolan-muk": "muk-alola",
+        "alolan-exeggutor": "exeggutor-alola",
+        "alolan-marowak": "marowak-alola",
+        "dawn-wings-necrozma" : "necrozma-dawn",
+        "dusk-mane-necrozma" : "necrozma-dusk",
+        "ultra-necrozma" : "necrozma-ultra",
+        
+        
+        "galarian-meowth": "meowth-galar",
+        "galarian-ponyta": "ponyta-galar",
+        "galarian-rapidash": "rapidash-galar",
+        "galarian-slowpoke": "slowpoke-galar",
+        "galarian-slowbro": "slowbro-galar",
+        "galarian-farfetchd": "farfetchd-galar",
+        "galarian-weezing": "weezing-galar",
+        "galarian-mr-mime": "mr-mime-galar",
+        "galarian-articuno": "articuno-galar",
+        "galarian-zapdos": "zapdos-galar",
+        "galarian-moltres": "moltres-galar",
+        "galarian-slowking": "slowking-galar",
+        "galarian-corsola": "corsola-galar",
+        "galarian-zigzagoon": "zigzagoon-galar",
+        "galarian-linoone": "linoone-galar",
+        "galarian-darumaka": "darumaka-galar",
+        "galarian-darmanitan": "darmanitan-galar-standard",
+        "galarian-yamask": "yamask-galar",
+        "galarian-stunfisk": "stunfisk-galar",
+        "toxtricity" : "toxtricity-amped",
+        
+        "paldean-wooper": "wooper-paldea",
+        "paldean-tauros-combat-breed": "tauros-paldea-combat-breed",
+        "paldean-tauros-blaze-breed": "tauros-paldea-blaze-breed",
+        "paldean-tauros-aqua-breed": "tauros-paldea-aqua-breed",
+        "female-oinkologne" : "oinkologne-female",
+        "male-oinkologne" : "oinkologne-male",
+        
+        
         
         # add more as needed
     }
@@ -499,13 +595,32 @@ def load_scraped_data(id) -> dict:
 
 def edge_case_abilities(pokemon_name: str, ability_name: str) -> str:
     if ability_name == "as-one":
-        if pokemon_name == "calyrex-shadow":
+        if pokemon_name == "calyrex-shadow" or pokemon_name == "shadow-rider-calyrex":
             return "as-one-spectrier"
 
-        if pokemon_name == "calyrex-ice":
+        if pokemon_name == "calyrex-ice" or pokemon_name == "ice-rider-calyrex":
             return "as-one-glastrier"
+        
+        if pokemon_name == "ursaluna-bloodmoon" and ability_name == "mind":
+            return "minds-eye"
 
     return ability_name
+
+def normalize_regulation(regulation_text: str) -> str:
+    regulation_text = regulation_text.strip()
+
+    # Scarlet/Violet
+    match = re.search(r"Regulation(?: Set)?\s+([A-Z](?:-[A-Z])?)", regulation_text)
+    if match:
+        return match.group(1)
+
+    # Sword/Shield
+    match = re.search(r"Series\s+(\d+)", regulation_text)
+    if match:
+        return f"S{match.group(1)}"
+
+    # Unknown future format
+    return regulation_text
 
 
 def main():
@@ -547,7 +662,9 @@ def main():
         except Exception as e:
             conn.rollback()
             failed_events.append(event_id)
-            print(f"Failed event {event_id}: {e}")
+
+            print(f"\nFailed event {event_id}: {e}")
+            traceback.print_exc()
 
     print("Failed events: ", failed_events)
     cur.close()
