@@ -9,7 +9,7 @@ WITH eligible_events AS (
     JOIN event_team_totals ett
         ON ett.event_id = e.event_id
     WHERE e.regulation = :regulation          -- Change regulation here
-      AND ett.teams_in_event >= 60
+      AND ett.teams_in_event >= :min_event_size
 ),
 
 total_teams AS (
@@ -49,4 +49,4 @@ SELECT
 FROM pokemon_usage pu
 CROSS JOIN total_teams tt
 ORDER BY usage_percent DESC
-LIMIT 10;
+LIMIT :num_pokemon;
