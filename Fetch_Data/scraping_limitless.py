@@ -103,8 +103,17 @@ def get_event_details (id: int) -> dict:
     
         
         #Find reference to team sheet
-        team_href = player.find("a", href=lambda x: x and x.startswith("/teams/"))["href"]
-       
+        #Some have no team sheets, skip beacuse they are not usefel
+        team_link = player.find(
+            "a",
+            href=lambda x: x and x.startswith("/teams/")
+        )
+
+        if team_link is None:
+            print(f"Skipping {name} in event {id}: no team sheet")
+            continue
+
+        team_href = team_link["href"]       
         
         #Create another instance this time for the team sheet
         team_res = requests.get("https://limitlessvgc.com" + team_href)
@@ -124,19 +133,13 @@ def get_event_details (id: int) -> dict:
         for pokemon in all_pokemon:
             pk_name = normalize_limitless_name_to_pokeapi(pokemon.find(class_="name").find("a").text.strip())
             pk_name = edge_case_names(pk_name)
-            item_element = normalize_string(pokemon.find("div", class_="details").find(class_="item").text.strip())
-            
-            # In rare case where pokemon does not hold item
             details_element = pokemon.find("div", class_="details")
+            item_element = details_element.find(class_="item") if details_element else None
 
-            if details_element is not None:
-                item_element = details_element.find(class_="item")
-            else:
-                item_element = None
-
-            if item_element is not None:
+            if item_element:
                 item_text = item_element.get_text(" ", strip=True)
 
+                # Remove "Held Item:" prefix if present
                 item_text = re.sub(
                     r"^held\s*item\s*:\s*",
                     "",
@@ -144,10 +147,7 @@ def get_event_details (id: int) -> dict:
                     flags=re.IGNORECASE
                 ).strip()
 
-                if item_text:
-                    pk_item = normalize_string(item_text)
-                else:
-                    pk_item = None
+                pk_item = normalize_string(item_text) if item_text else None
             else:
                 pk_item = None
                 
@@ -513,6 +513,9 @@ def edge_case_names(scraped_name: str) -> str:
         "dawn-wings-necrozma" : "necrozma-dawn",
         "dusk-mane-necrozma" : "necrozma-dusk",
         "ultra-necrozma" : "necrozma-ultra",
+        "lycanroc" : "lycanroc-midday",
+        "lycanroc-midnight": "lycanroc-midday",
+        "lycanroc-dusk": "lycanroc-midday",
         
         
         "galarian-meowth": "meowth-galar",
