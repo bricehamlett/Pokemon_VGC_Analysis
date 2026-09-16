@@ -1,6 +1,10 @@
 -- Takes in Regulation Parameter and number of teams and gives a table with the top X usage rates
-
-WITH eligible_events AS (
+WITH event_team_totals AS (
+	SELECT event_id, COUNT(DISTINCT team_id) as teams_in_event
+	FROM teams
+	GROUP BY event_id
+),
+eligible_events AS (
     SELECT
         e.event_id,
         e.regulation,
