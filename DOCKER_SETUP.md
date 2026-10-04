@@ -3,8 +3,17 @@
 ## Project services
 
 - `db`: PostgreSQL 18.6 with persistent Docker storage.
-- `seed`: one-shot Python job that fills Pokemon, moves, abilities, and items when those tables are empty.
+- `seed`: verifies Pokémon, moves, abilities, and items against PokeAPI catalogs;
+  completed records are checkpointed, cached, and skipped on subsequent runs.
 - `scraper`: runs `scraping_limitless.py` after seeding succeeds.
+- `api`: imports all advertised VGC formats after seeding, skipping older committed
+  events and refreshing events started in the last 14 days. First-run backfills
+  are uncapped; raw snapshots and run reports persist under `Fetch_Data/data/`.
+
+From the repository root, `python start_app.py` runs both collectors. Use
+`python start_app.py --api-max-events 2` for a bounded API import of two events per
+format. See [the ingestion guide](Fetch_Data/API_INGESTION.md) for audit-only runs,
+quality checks, and verification queries.
 
 ## First run
 
@@ -18,6 +27,15 @@
    ```
 
 The first run takes longer because the seed service downloads reference data from PokeAPI.
+Slow requests are retried up to four times with a 45-second read timeout. If a
+request still fails, successfully committed records remain saved. Rerun
+`python start_app.py` from the repository root to resume; do not reset the database.
+Existing rows created by the old seeder are verified once to establish checkpoints.
+
+Catalogs are cached for 24 hours, and resource details persist under
+`Fetch_Data/data/pokeapi/`. Both cache and database checkpoints survive container
+restarts. Reference verification always runs before tournament ingestion; a table
+having some rows is no longer treated as proof that seeding finished.
 
 ## Database connection from your computer
 

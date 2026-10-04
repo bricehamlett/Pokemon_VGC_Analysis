@@ -7,10 +7,8 @@ Also use same api to fill 'moves' table for refernces
 """
 
 import os
-import requests
 import psycopg2
 import json
-import time
 
 """
 Takes in raw Json from https://pokeapi.co/api/v2/pokemon/
@@ -106,246 +104,31 @@ Takes in connection to SQL DB and the URL for pokeapi
 goes through pokedex from the API from 1-1025 pokemon
 Gets their stats and type and commits them into table 'pokemon'
 """      
-def commit_to_pokemon(cur, conn, URL):
-    pokemon_query = """
-        INSERT INTO pokemon (
-        poke_dex,
-        pokemon_name,
-        generation,
-        hp,
-        atk,
-        def,
-        spa,
-        spd,
-        spe
-    )
-    VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
-    ON CONFLICT (pokemon_name) DO NOTHING
-    RETURNING pk_id; """
-    type_query = """
-            INSERT INTO pokemon_types
-            VALUES (%s, %s, %s)
-            ON CONFLICT (pk_id, type_id) DO NOTHING;
-            """
-    
-    
-    list_res = requests.get(
-    "https://pokeapi.co/api/v2/pokemon?limit=100000",
-    timeout=30
-    )
-    
-    list_res.raise_for_status()
-
-    all_pokemon = list_res.json()["results"]
-    
+def _seed_reference_stage(conn, stage):
     try:
-        
-        for pokemon in all_pokemon:
-            
-            
-            res = requests.get(pokemon["url"], timeout=10)
-            res.raise_for_status()
-            data = res.json()
-            
-  
-            
-            #Parameters for pokemon stable
-            stats = get_stats(data)
-            name = data.get("name")
-            pokeapi_id = data.get("id")
-        
-            #first type that will be inserted into pokemon_types table
-            type1 = get_type_id(data.get("types")[0].get("type").get("name"))
-            
-            species_url = data["species"]["url"]
-            national_dex = int(
-                species_url.rstrip("/").split("/")[-1]
-            )
-            generation = get_generation(national_dex)
+        from .seed_database import seed_stage
+    except ImportError:
+        from seed_database import seed_stage
+    return seed_stage(conn, stage)
 
-            
-            print(
-                f"{name}: "
-                f"PokeAPI ID = {pokeapi_id}, "
-                f"National Dex = {national_dex}"
-            )
-            
-            cur.execute(pokemon_query, (national_dex, name, generation, stats.get("hp"), stats.get("atk"), stats.get("def"), stats.get("spa"), stats.get("spd"), stats.get("spe")))
-            row = cur.fetchone()
 
-            if row is not None:
-                pk_id = row[0]
-            else:
-                cur.execute(
-                    "SELECT pk_id FROM pokemon WHERE pokemon_name = %s",
-                    (name,)
-                )
-                pk_id = cur.fetchone()[0]
-            cur.execute(type_query, (pk_id, type1, 1))
-            
-            #Find if pokemon has second type, if so then add to pokemon_types table
-            try:
-                type2 = get_type_id(data.get("types")[1].get("type").get("name"))
-                
-                cur.execute(type_query, (pk_id, type2, 2))
-            except IndexError:
-                type2 = None
-                
-                
-            #if pokemon_id % 50 == 0 or pokemon_id == 1025:
-            conn.commit()
-            time.sleep(0.1)
-            
-    #If error occurs rollback changes and exit program
-    except Exception:
-        conn.rollback()
-        raise
-    finally:
-        cur.close()
-        conn.close() 
-      
+def commit_to_pokemon(cur, conn, URL=None):
+    """Compatibility wrapper; progress is committed per complete resource."""
+    return _seed_reference_stage(conn, 'pokemon')
+
+
 def commit_to_moves(cur):
-    
-    #Connect to PokeAPI to get all of the moves
-    BASE_URL = "https://pokeapi.co/api/v2/move?limit=10000"
-    response = requests.get(BASE_URL)
-    response.raise_for_status()
-
-    #Collect all moves into a list
-    all_moves = response.json()["results"]
-
-    print(f"Found {len(all_moves)} moves. Beginning insertion...\n")
-
-    #Loop through all moves
-    for move in all_moves:
-        move_url = move["url"]
+    return _seed_reference_stage(cur.connection, 'moves')
 
 
-        try:
-            move_data = requests.get(move_url).json()
-
-            move_id = move_data["id"]
-            move_name = move_data["name"]
-
-            move_type = move_data["type"]["name"]
-            type_id = get_type_id(move_type)
-
-            accuracy = move_data["accuracy"]        # Can be None
-            power = move_data["power"]              # Can be None
-            priority = move_data["priority"]
-
-            cur.execute("""
-                INSERT INTO Moves (move_id, move_name, type_id, accuracy, power, priority)
-                VALUES (%s, %s, %s, %s, %s, %s)
-                ON CONFLICT (move_id) DO NOTHING;
-            """, (move_id, move_name, type_id, accuracy, power, priority))
-
-            #Verify if it inserted properly
-            print(f"Inserted move {move_id} - {move_name}")
-
-            time.sleep(0.05)  # Small delay to be polite to API
-
-        except Exception as e:
-            #If not print details for edge cases
-            print(f"Error inserting move {move['name']}: {e}")
-
-    
-
-
-    
 def commit_to_abilities(cur):
-    
-    BASE_URL = "https://pokeapi.co/api/v2/ability?limit=100000"
-    resp = requests.get(BASE_URL, timeout=30)
-    resp.raise_for_status()
-    all_abilities = resp.json()["results"]
-
-    print(f"Found {len(all_abilities)} abilities. Beginning insertion...\n")
-
-
-    # LOOP THROUGH ABILITIES (single inserts)  
-    for ability in all_abilities:
-        ability_url = ability["url"]
-
-        try:
-            data = requests.get(ability_url, timeout=30).json()
-
-            ability_id = data["id"]
-            ability_name = data["name"]
-
-            cur.execute("""
-                INSERT INTO Abilities (ability_id, ability_name)
-                VALUES (%s, %s)
-                ON CONFLICT (ability_id) DO NOTHING;
-            """, (ability_id, ability_name))
-
-            print(f"Inserted ability {ability_id} - {ability_name}")
-
-            time.sleep(0.05)  # small delay to be polite to the API
-
-        except Exception as e:
-            print(f"\n\nError inserting ability {ability['name']}: {e}\n\n")
-
-import requests
-import time
+    return _seed_reference_stage(cur.connection, 'abilities')
 
 
 def commit_to_items(cur):
-    """
-    Inserts *all* items from PokeAPI into Items(item_id, item_name),
-    instead of trying to infer held items from an item-category.
+    return _seed_reference_stage(cur.connection, 'items')
 
-    Assumptions:
-      - Items table has columns: item_id (PK) and item_name
-      - Caller handles conn.commit() (recommended: commit once after the function)
-    """
 
-    BASE_URL = "https://pokeapi.co/api/v2/item"
-    limit = 200
-    offset = 0
-    inserted = 0
-
-    while True:
-        resp = requests.get(BASE_URL, params={"limit": limit, "offset": offset}, timeout=30)
-        resp.raise_for_status()
-        data = resp.json()
-
-        results = data.get("results", [])
-        if not results:
-            break
-
-        print(f"Fetched {len(results)} items (offset={offset}). Inserting...")
-
-        for it in results:
-            name = it["name"]  # already PokeAPI canonical format
-            url = it["url"]
-
-            # Parse numeric id from URL: .../item/<id>/
-            try:
-                item_id = int(url.rstrip("/").split("/")[-1])
-            except Exception:
-                # Fallback: if URL parsing ever fails, fetch the item detail
-                item_data = requests.get(url, timeout=30).json()
-                item_id = item_data["id"]
-
-            cur.execute(
-                """
-                INSERT INTO Items (item_id, item_name)
-                VALUES (%s, %s)
-                ON CONFLICT (item_id) DO NOTHING
-                """,
-                (item_id, name),
-            )
-
-            inserted += 1
-
-        # Next page
-        if data.get("next") is None:
-            break
-
-        offset += limit
-        time.sleep(0.05)  # small delay to be polite
-        
 # Get the generation based on the National Dex number
 def get_generation(national_dex: int) -> int:
     if national_dex <= 151:
@@ -371,22 +154,13 @@ def get_generation(national_dex: int) -> int:
 
     
 
-def main ():
-    URL = "https://pokeapi.co/api/v2/pokemon/"
-    conn = get_connection()
-    cur = conn.cursor()
-    
-    commit_to_pokemon(cur, conn, URL)
-    commit_to_moves(cur) 
-    commit_to_abilities(cur)
-    commit_to_items(cur)
-    
-    conn.commit()
-    cur.close()
-    conn.close()
+def main():
+    try:
+        from .seed_database import main as seed_main
+    except ImportError:
+        from seed_database import main as seed_main
+    return seed_main()
 
 
-
-
-if __name__ == "__main__":
-    main()
+if __name__ == '__main__':
+    raise SystemExit(main())

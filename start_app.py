@@ -1,6 +1,7 @@
 """Start the Pokémon VGC application."""
 
 from pathlib import Path
+import argparse
 import shutil
 import subprocess
 import sys
@@ -58,47 +59,33 @@ def wait_for_database():
     return False
 
 
-def database_is_seeded():
-    """
-    Check whether the important reference tables contain data.
-
-    If all four contain at least one row, consider the database seeded.
-    """
-
-    query = """
-    SELECT CASE
-        WHEN EXISTS (SELECT 1 FROM pokemon)
-         AND EXISTS (SELECT 1 FROM moves)
-         AND EXISTS (SELECT 1 FROM abilities)
-         AND EXISTS (SELECT 1 FROM items)
-        THEN 1
-        ELSE 0
-    END;
-    """
-
-    result = subprocess.run(
-        compose_command(
-            "exec",
-            "-T",
-            "db",
-            "sh",
-            "-c",
-            f'''psql -U "$POSTGRES_USER" -d "$POSTGRES_DB" -tAc "{query}"''',
-        ),
-        cwd=DOCKER_DIRECTORY,
-        capture_output=True,
-        text=True,
-    )
-
-    if result.returncode != 0:
-        print("Could not check database contents.")
-        print(result.stderr)
-        return False
-
-    return result.stdout.strip() == "1"
+def run_ingestion(api_max_events=None):
+    """Run both collectors, attempt the API even if scraping fails."""
+    failed = []
+    for service in ('scraper', 'api'):
+        print(f"\nStarting Limitless {service} ingestion...\n", flush=True)
+        command = compose_command('run', '--rm', '--no-deps', service)
+        if service == 'api':
+            command += ['--write']
+            if api_max_events is not None:
+                command += ['--max-events', str(api_max_events)]
+        result = subprocess.run(command, cwd=DOCKER_DIRECTORY)
+        if result.returncode:
+            failed.append((service, result.returncode))
+    if failed:
+        print(f"Ingestion completed with failures: {failed}")
+        return failed[0][1]
+    print('\nBoth ingestion stages completed successfully.')
+    return 0
 
 
-def main() -> int:
+def main(argv=None) -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--api-max-events', type=int,
+                        help='Optional API import cap per format for a bounded run; default: uncapped')
+    args = parser.parse_args(argv)
+    if args.api_max_events is not None and args.api_max_events < 1:
+        parser.error('--api-max-events must be positive')
 
     # -------------------------
     # Basic checks
@@ -153,6 +140,7 @@ def main() -> int:
             "build",
             "seed",
             "scraper",
+            "api",
         ),
         cwd=DOCKER_DIRECTORY,
     )
@@ -164,55 +152,25 @@ def main() -> int:
     # Check seed status
     # -------------------------
 
-    print("\nChecking database...")
-
-    if database_is_seeded():
-
-        print("Database already populated.")
-        print("Skipping seed.")
-
-    else:
-
-        print("Database is empty or incomplete.")
-        print("Running seed...\n")
-
-        result = subprocess.run(
-            compose_command(
-                "run",
-                "--rm",
-                "seed",
-            ),
-            cwd=DOCKER_DIRECTORY,
-        )
-
-        if result.returncode != 0:
-            print("Database seeding failed.")
-            return result.returncode
-
-        print("\nDatabase seeded successfully.")
-
-    # -------------------------
-    # Run scraper
-    # -------------------------
-
-    print("\nStarting Limitless scraper...\n")
-
-    try:
-        result = subprocess.run(
-            compose_command(
-                "run",
-                "--rm",
-                "--no-deps",
-                "scraper",
-            ),
-            cwd=DOCKER_DIRECTORY,
-        )
-
+    print("\nVerifying and resuming reference-data seed...", flush=True)
+    result = subprocess.run(
+        compose_command('run', '--rm', '--no-deps', 'seed'),
+        cwd=DOCKER_DIRECTORY,
+    )
+    if result.returncode != 0:
+        print('Reference seeding is incomplete. Saved progress will resume on the next run.')
         return result.returncode
 
+    # -------------------------
+    # Run both ingestion sources
+    # -------------------------
+
+    try:
+        return run_ingestion(args.api_max_events)
+
     except KeyboardInterrupt:
-        print("\nScraper stopped.")
-        return 0
+        print("\nIngestion interrupted; the next run can resume committed API events.")
+        return 130
 
 
 if __name__ == "__main__":

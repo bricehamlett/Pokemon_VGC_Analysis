@@ -36,6 +36,8 @@ services:
   seed:
     build: .
     command: ["python", "seed_database.py"]
+    volumes:
+      - ./data:/app/data
     environment: &app_environment
       DB_HOST: db
       DB_PORT: "5432"
@@ -49,8 +51,22 @@ services:
 
   scraper:
     build: .
+    volumes:
+      - ./data:/app/data
     command: ["python", "scraping_limitless.py"]
     environment: *app_environment
+    depends_on:
+      seed:
+        condition: service_completed_successfully
+    restart: "no"
+
+  api:
+    build: .
+    entrypoint: ["python", "limitless_api.py"]
+    command: ["--write"]
+    environment: *app_environment
+    volumes:
+      - ./data:/app/data
     depends_on:
       seed:
         condition: service_completed_successfully

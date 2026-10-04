@@ -69,6 +69,13 @@ The schema follows strict normalization principles and analytical practices.
 
 ## Data Pipeline
 
+The pipeline supports both official-event HTML scraping and Play Limitless API
+ingestion through a shared PostgreSQL loader. The API command audits by default;
+`--write` enables imports and the additive migration. `python start_app.py` runs
+both collectors, with the API importing all advertised VGC formats and resuming
+from committed events on later runs. See
+[combined ingestion setup and data-quality rules](Fetch_Data/API_INGESTION.md).
+
 ### Step 1 — Pokédex Load
 
 - Pull Pokémon data from PokeAPI
@@ -111,4 +118,3 @@ All names are normalized before database insertion.
 - Cross-regulation meta comparisons
 - Team composition clustering
 - Synergy analysis between Pokémon pairs
-
